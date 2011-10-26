@@ -1,0 +1,7 @@
+-F0x30 -g -blit:0x200.0x7fff 
+ -bdata:0.0x6ff -bSSCParmBlk:0x00F7.0x00FF -BInterruptRAM:0 -Bvirtual_registers  
+ -BtoastedCypressUsb_RAM   
+ -BserialPassThru_RAM 
+ -o"output/toastedCypressUsb" 
+ ./obj/avrisp.o ./obj/base.o ./obj/fifobuf.o ./obj/icsppgmr.o ./obj/main.o ./obj/msgdispatch.o ./obj/offchipboot.o ./obj/tick.o ./obj/usb.o ./obj/usbctl.o ./obj/usbserial.o  
+ C:/Users/stone/DOCUME~1/TOASTE~2/TOASTE~1/lib/libPSoc.a -LC:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/lib/LMM/eightpages C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/lib/CY7C64300/cms.a C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/lib/LMM/UASW/NoMAC/arith.a  

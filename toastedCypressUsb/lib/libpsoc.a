@@ -1,0 +1,2865 @@
+.start
+XH
+H 2 areas 1A global symbols
+M usbfsint.asm
+S _USBFS_Start Ref0000
+S USBFS_bCurrentDevice Ref0000
+S USBFS_EndpointAPIStatus Ref0000
+S USBFS_EPXDataToggle Ref0000
+A text size 8D flags 0
+dbfile lib/usbfsint.asm
+dbfunc 0 ? 0 I
+dbline 77 0
+dbline 78 1
+dbline 2 4
+dbline 7A 6
+dbline 2 8
+dbline 7C A
+dbline 7D D
+dbline 7E E
+dbline 9B F
+dbline 9C 10
+dbline 2 13
+dbline 9E 15
+dbline 2 17
+dbline A0 19
+dbline A1 1C
+dbline A2 1D
+dbline BE 1E
+dbline BF 1F
+dbline 2 22
+dbline C1 24
+dbline 2 26
+dbline C3 28
+dbline C4 2B
+dbline C5 2C
+dbline E1 2D
+dbline E2 2E
+dbline 2 31
+dbline E4 33
+dbline 2 35
+dbline E6 37
+dbline E7 3A
+dbline E8 3B
+dbline 103 3C
+dbline 104 3D
+dbline 2 40
+dbline 106 42
+dbline 2 44
+dbline 108 46
+dbline 109 49
+dbline 10A 4A
+dbline 125 4B
+dbline 126 4C
+dbline 2 4F
+dbline 128 51
+dbline 2 53
+dbline 12A 55
+dbline 12B 58
+dbline 12C 59
+dbline 147 5A
+dbline 148 5B
+dbline 2 5E
+dbline 14A 60
+dbline 2 62
+dbline 14C 64
+dbline 14D 67
+dbline 14E 68
+dbline 169 69
+dbline 16A 6A
+dbline 2 6D
+dbline 16C 6F
+dbline 2 71
+dbline 16E 73
+dbline 16F 76
+dbline 170 77
+dbline 1A0 78
+dbline 1A1 79
+dbline 2 7A
+dbline 1A3 7C
+dbline 2 7E
+dbline 1A5 80
+dbline 1A6 82
+dbline 1A7 83
+dbline 1A8 85
+dbline 1A9 88
+dbline 1AA 89
+dbline 1AE 8A
+dbline 1C1 8B
+dbline 1D2 8C
+dbfile ./lib/USBFS.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfsint.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfsint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+S _USBFS_RESET_ISR Def0078
+S USBFS_SOF_ISR Def008B
+S _USBFS_EP1_ISR Def0000
+S _USBFS_EP2_ISR Def000F
+S _USBFS_EP3_ISR Def001E
+S _USBFS_EP4_ISR Def002D
+S _USBFS_EP5_ISR Def003C
+S _USBFS_EP6_ISR Def004B
+S _USBFS_EP7_ISR Def005A
+S _USBFS_WAKEUP_ISR Def008C
+S _USBFS_EP8_ISR Def0069
+S _USBFS_SOF_ISR Def008B
+S USBFS_RESET_ISR Def0078
+S USBFS_EP1_ISR Def0000
+S USBFS_EP2_ISR Def000F
+S USBFS_EP3_ISR Def001E
+S USBFS_EP4_ISR Def002D
+S USBFS_EP5_ISR Def003C
+S USBFS_EP6_ISR Def004B
+S USBFS_EP7_ISR Def005A
+S USBFS_WAKEUP_ISR Def008C
+S USBFS_EP8_ISR Def0069
+A InterruptRAM size 0 flags 20
+T 00 00 08 36 00 00 01 71 10 5D 54 70 EF 55 00 01
+R 00 00 00 00 03 04 00 03 03 0E 00 02
+T 00 0C 01 18 7E 08 36 00 00 02 71 10 5D 55 70 EF
+R 00 00 00 00 03 07 00 03
+T 00 19 55 00 02 01 18 7E 08 36 00 00 04 71 10 5D
+R 00 00 00 00 03 03 00 02 03 0A 00 03
+T 00 25 56 70 EF 55 00 03 01 18 7E 08 36 00 00 08
+R 00 00 00 00 03 06 00 02 03 0D 00 03
+T 00 31 71 10 5D 57 70 EF 55 00 04 01 18 7E 08 36
+R 00 00 00 00 03 09 00 02
+T 00 3E 00 00 10 71 10 5D 58 70 EF 55 00 05 01 18
+R 00 00 00 00 03 02 00 03 03 0C 00 02
+T 00 4A 7E 08 36 00 00 20 71 10 5D 59 70 EF 55
+R 00 00 00 00 03 05 00 03
+T 00 56 00 06 01 18 7E 08 36 00 00 40 71 10 5D 5A
+R 00 00 00 00 03 02 00 02 03 09 00 03
+T 00 62 70 EF 55 00 07 01 18 7E 08 36 00 00 80 71
+R 00 00 00 00 03 05 00 02 03 0C 00 03
+T 00 6E 10 5D 5B 70 EF 55 00 08 01 18 7E 08 10 71
+R 00 00 00 00 03 08 00 02
+T 00 7B 10 5D 30 70 EF 21 01 5C 51 00 00 7C 00 00
+R 00 00 00 00 03 0B 00 01 02 0E 00 00
+T 00 88 20 18 7E 7E 7E
+R 00 00 00 00
+.end
+.start
+XH
+H 3 areas 6C global symbols
+M usbfs_std.asm
+S USBFS_EP0_UPD_MODE_EXIT Ref0000
+S USBFS_DEVICE_DESCR_TABLE Ref0000
+S USBFS_NoDataStageControlTransfer Ref0000
+S USBFS_Configuration Ref0000
+S USBFS_StringTable Ref0000
+S USBFS_InterfaceSetting Ref0000
+S USBFS_bCurrentDevice Ref0000
+S USBFS_EndpointAPIStatus Ref0000
+S USBFS_TransferBuffer Ref0000
+S USBFS_fDataPending Ref0000
+S USBFS_t1 Ref0000
+S USBFS_t2 Ref0000
+S USBFS_GET_DEVICE_TABLE_ENTRY Ref0000
+S USBFS_USB_EPX_BIT_LOOKUP Ref0000
+S USBFS_EndpointStatus Ref0000
+S USBFS_EPXDataToggle Ref0000
+S USBFS_DeviceStatus Ref0000
+S USBFS_GetTableEntry Ref0000
+S USBFS_GETWORD Ref0000
+A text size 0 flags 0
+dbfile lib/usbfs_std.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/USBFS.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs_std.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/USBFS_macros.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs_std.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A bss size 0 flags 20
+A UserModules size 308 flags 0
+dbfile lib/usbfs_std.asm
+dbfunc 0 ? 0 I
+dbline 136 0
+dbline 137 2
+dbline 138 4
+dbline 15E 10
+dbline 160 13
+dbline 161 16
+dbline 163 19
+dbline 164 1B
+dbline 165 1D
+dbline 185 1F
+dbline 186 21
+dbline 187 23
+dbline 188 25
+dbline 189 27
+dbline 18A 29
+dbline 18B 2B
+dbline 18C 2D
+dbline 18D 2F
+dbline 192 31
+dbline 2 33
+dbline 3 35
+dbline 4 37
+dbline 5 38
+dbline 7 3A
+dbline 19B 3C
+dbline 19C 3E
+dbline 19D 40
+dbline 19E 42
+dbline 19F 44
+dbline 1A0 46
+dbline 1A1 48
+dbline 1A2 4A
+dbline 1A3 4C
+dbline 1A4 4E
+dbline 1AA 50
+dbline 2 52
+dbline 3 54
+dbline 4 56
+dbline 5 57
+dbline 7 59
+dbline 1B4 5B
+dbline 1B5 5D
+dbline 1B6 5F
+dbline 1B7 61
+dbline 1B8 63
+dbline 1B9 65
+dbline 1BA 67
+dbline 1BB 69
+dbline 1BC 6B
+dbline 1BD 6D
+dbline 1BE 6F
+dbline 1C3 71
+dbline 1C4 74
+dbline 1C5 76
+dbline 1C8 78
+dbline 2 7A
+dbline 3 7C
+dbline 4 7E
+dbline 5 7F
+dbline 7 81
+dbline 1D1 83
+dbline 1D2 85
+dbline 1D3 87
+dbline 1D4 89
+dbline 1D5 8B
+dbline 1D6 8D
+dbline 1D7 8F
+dbline 1D8 91
+dbline 1D9 93
+dbline 1DA 95
+dbline 1DB 97
+dbline 1DC 99
+dbline 1E1 9B
+dbline 1E2 9E
+dbline 1E3 A0
+dbline 1E6 A2
+dbline 2 A4
+dbline 3 A6
+dbline 4 A8
+dbline 5 A9
+dbline 7 AB
+dbline 1FA AD
+dbline 1FB AF
+dbline 1FC B1
+dbline 1FD B3
+dbline 1FE B5
+dbline 1FF B7
+dbline 200 B9
+dbline 201 BB
+dbline 202 BD
+dbline 203 BF
+dbline 204 C1
+dbline 205 C3
+dbline 206 C5
+dbline 20B C7
+dbline 20C CA
+dbline 20E CC
+dbline 20F CE
+dbline 210 D0
+dbline 211 D2
+dbline 212 D4
+dbline 214 D6
+dbline 218 D8
+dbline 2 DA
+dbline 3 DC
+dbline 4 DE
+dbline 5 DF
+dbline 7 E1
+dbline 221 E3
+dbline 222 E5
+dbline 223 E7
+dbline 224 E9
+dbline 229 EB
+dbline 22A EE
+dbline 22C F0
+dbline 22D F2
+dbline 22E F4
+dbline 22F F6
+dbline 230 F8
+dbline 232 FA
+dbline 236 FC
+dbline 2 FE
+dbline 3 100
+dbline 4 102
+dbline 5 103
+dbline 7 105
+dbline 23A 107
+dbline 23D 10A
+dbline 27A 10D
+dbline 27B 10F
+dbline 27C 110
+dbline 27D 112
+dbline 27F 114
+dbline 282 116
+dbline 283 118
+dbline 284 11A
+dbline 286 11C
+dbline 292 11E
+dbline 293 120
+dbline 294 121
+dbline 295 123
+dbline 296 124
+dbline 297 126
+dbline 298 129
+dbline 29A 12B
+dbline 29B 12D
+dbline 29D 12F
+dbline 29F 130
+dbline 2A0 132
+dbline 2A1 134
+dbline 2A2 135
+dbline 2A3 136
+dbline 2A4 137
+dbline 2A5 139
+dbline 2A7 13B
+dbline 2A8 13C
+dbline 2AB 13E
+dbline 2AC 13F
+dbline 2B1 141
+dbline 2B2 144
+dbline 2B3 146
+dbline 2B4 148
+dbline 2B5 149
+dbline 2B6 14B
+dbline 2B8 14D
+dbline 2BA 14F
+dbline 2C0 151
+dbline 2C1 153
+dbline 2C3 155
+dbline 2C4 157
+dbline 2C5 159
+dbline 2C6 15A
+dbline 2C7 15C
+dbline 2C9 15E
+dbline 2CB 160
+dbline 2FD 16B
+dbline 2FE 16E
+dbline 2FF 170
+dbline 300 172
+dbline 32A 174
+dbline 32D 176
+dbline 32E 178
+dbline 32F 17A
+dbline 330 17D
+dbline 35A 17F
+dbline 35D 181
+dbline 35E 183
+dbline 360 185
+dbline 361 187
+dbline 363 189
+dbline 366 18B
+dbline 367 18E
+dbline 36A 190
+dbline 36C 192
+dbline 397 194
+dbline 398 197
+dbline 399 199
+dbline 39B 19B
+dbline 3C6 19D
+dbline 3C7 19F
+dbline 3C8 1A2
+dbline 3CA 1A4
+dbline 3CB 1A6
+dbline 3CC 1A8
+dbline 3CD 1AA
+dbline 3CE 1AC
+dbline 3CF 1AD
+dbline 3D0 1AF
+dbline 3D3 1B1
+dbline 3D5 1B4
+dbline 3D6 1B7
+dbline 3D9 1B9
+dbline 3DA 1BB
+dbline 3DB 1BD
+dbline 3DC 1BE
+dbline 3DD 1C0
+dbline 3DE 1C3
+dbline 3E0 1C5
+dbline 3E2 1C7
+dbline 3E3 1C8
+dbline 3E4 1C9
+dbline 3E5 1CB
+dbline 3E6 1CD
+dbline 3E7 1CE
+dbline 3E8 1D0
+dbline 3E9 1D3
+dbline 3EA 1D4
+dbline 3EC 1D6
+dbline 3ED 1D7
+dbline 3EE 1D9
+dbline 3F0 1DB
+dbline 2 1DD
+dbline 3F5 1DF
+dbline 3F7 1E1
+dbline 3F8 1E4
+dbline 3F9 1E7
+dbline 3FA 1E8
+dbline 2 1EA
+dbline 3FD 1EC
+dbline 42B 1F7
+dbline 42C 1FA
+dbline 42E 1FD
+dbline 42F 200
+dbline 430 202
+dbline 432 204
+dbline 460 20F
+dbline 461 211
+dbline 462 213
+dbline 464 215
+dbline 466 216
+dbline 467 218
+dbline 469 21A
+dbline 46A 21D
+dbline 46B 21F
+dbline 46D 221
+dbline 496 223
+dbline 497 225
+dbline 498 227
+dbline 499 229
+dbline 49B 22B
+dbline 49D 22C
+dbline 49F 22F
+dbline 4A0 232
+dbline 4A1 234
+dbline 4A3 236
+dbline 4A4 238
+dbline 4A6 23A
+dbline 4D3 23C
+dbline 4D4 23E
+dbline 4D5 240
+dbline 4D7 242
+dbline 4D8 244
+dbline 4D9 246
+dbline 4DA 248
+dbline 4DC 24A
+dbline 4DD 24C
+dbline 4DF 24E
+dbline 4E0 24F
+dbline 4E2 252
+dbline 4E3 254
+dbline 4E4 256
+dbline 4E6 258
+dbline 2 25B
+dbline 4E8 25D
+dbline 4EB 25F
+dbline 4EC 262
+dbline 4ED 265
+dbline 4EF 267
+dbline 4F0 26A
+dbline 2 26D
+dbline 4F3 26F
+dbline 51D 271
+dbline 51E 273
+dbline 51F 275
+dbline 521 277
+dbline 522 279
+dbline 523 27B
+dbline 524 27D
+dbline 526 27F
+dbline 527 281
+dbline 529 283
+dbline 52B 284
+dbline 52C 287
+dbline 52E 28A
+dbline 2 28D
+dbline 530 28F
+dbline 532 291
+dbline 533 294
+dbline 535 296
+dbline 2 299
+dbline 538 29B
+dbline 550 29D
+dbline 551 29F
+dbline 552 2A1
+dbline 556 2A2
+dbline 557 2A3
+dbline 558 2A4
+dbline 559 2A5
+dbline 55E 2A7
+dbline 55F 2A9
+dbline 560 2AB
+dbline 561 2AD
+dbline 562 2AF
+dbline 563 2B1
+dbline 564 2B3
+dbline 565 2B5
+dbline 566 2B7
+dbline 2 2B9
+dbline 56D 2BC
+dbline 2 2BE
+dbline 570 2C1
+dbline 2 2C3
+dbline 573 2C6
+dbline 2 2C8
+dbline 576 2CB
+dbline 2 2CD
+dbline 579 2D0
+dbline 2 2D2
+dbline 57C 2D5
+dbline 2 2D7
+dbline 57F 2DA
+dbline 2 2DC
+dbline 582 2DF
+dbline 2 2E1
+dbline 585 2E4
+dbline 595 2E6
+dbline 596 2E7
+dbline 597 2E9
+dbline 598 2EB
+dbline 59A 2ED
+dbline 2 2F0
+dbline 5A3 2F2
+dbline 5A4 2F3
+dbline 5A5 2F5
+dbline 5A7 2F7
+dbline 5A8 2FA
+dbline 5A9 2FD
+dbline 5AC 2FF
+dbline 5AD 302
+dbline 2 305
+dbline 5B3 307
+S $lb$USBFS_DT_h2d_std_ifc Def0083
+S $lb$USBFS_DT_d2h_std_ifc Def005B
+S $lb$.EP_INT_ENABLE Def02A7
+S $le$USBFS_DT_h2d_std_ifc Def00AD
+S $le$USBFS_DT_d2h_std_ifc Def0083
+S $le$.EP_INT_ENABLE Def02B9
+S $lb$USBFS_DT_h2d_std_dev Def003C
+S $lb$USBFS_DT_d2h_std_dev Def001F
+S $le$USBFS_DT_h2d_std_dev Def005B
+S $le$USBFS_DT_d2h_std_dev Def003C
+S USBFS_Not_Supported Def0000
+S USBFS_DT_h2d_std_ep_Dispatch Def00EB
+S USBFS_DT_d2h_std_ep_Dispatch Def00C7
+S USBFS_CB_d2h_std_ep_00 Def0223
+S USBFS_CB_h2d_std_ep_00 Def0000
+S USBFS_CB_h2d_std_ep_01 Def023C
+S USBFS_CB_d2h_std_ep_10 Def0000
+S USBFS_CB_d2h_std_ep_01 Def0000
+S USBFS_CB_h2d_std_ep_02 Def0000
+S USBFS_CB_d2h_std_ep_11 Def0000
+S USBFS_CB_d2h_std_ep_02 Def0000
+S USBFS_CB_h2d_std_ep_03 Def0271
+S USBFS_CB_d2h_std_ep_12 Def0000
+S USBFS_CB_d2h_std_ep_03 Def0000
+S USBFS_CB_d2h_std_ep_04 Def0000
+S USBFS_CB_d2h_std_ep_05 Def0000
+S USBFS_CB_d2h_std_ep_06 Def0000
+S USBFS_CB_d2h_std_ep_07 Def0000
+S $lb$GetInterfaceStatusTransferDescrTable Def01EE
+S USBFS_CB_d2h_std_ep_08 Def0000
+S USBFS_CB_d2h_std_ep_09 Def0000
+S $le$GetInterfaceStatusTransferDescrTable Def01F7
+S _USBFS_Not_Supported Def0000
+S USBFS_DT_h2d_std_ifc_Dispatch Def009B
+S USBFS_DT_d2h_std_ifc_Dispatch Def0071
+S $lb$GetConfigTransferDescrTable Def0162
+S $le$GetConfigTransferDescrTable Def016B
+S USBFS_DT_h2d_std_dev_Dispatch Def0050
+S USBFS_DT_d2h_std_dev_Dispatch Def0031
+S USBFS_CB_d2h_std_ifc_00 Def01F7
+S USBFS_CB_h2d_std_ifc_00 Def0000
+S USBFS_CB_d2h_std_ifc_10 Def020F
+S USBFS_CB_h2d_std_ifc_10 Def0000
+S USBFS_CB_h2d_std_ifc_01 Def0000
+S USBFS_CB_d2h_std_ifc_01 Def0000
+S USBFS_CB_h2d_std_ifc_11 Def0000
+S USBFS_CB_h2d_std_ifc_02 Def0000
+S USBFS_CB_d2h_std_ifc_02 Def0000
+S USBFS_CB_h2d_std_ifc_03 Def0000
+S USBFS_CB_d2h_std_ifc_03 Def0000
+S USBFS_CB_h2d_std_ifc_04 Def0000
+S USBFS_CB_d2h_std_ifc_04 Def0000
+S USBFS_CB_h2d_std_ifc_05 Def0000
+S USBFS_CB_d2h_std_ifc_05 Def0000
+S USBFS_CB_h2d_std_ifc_06 Def0000
+S USBFS_CB_d2h_std_ifc_06 Def0000
+S USBFS_CB_h2d_std_ifc_07 Def0000
+S USBFS_CB_d2h_std_ifc_07 Def0000
+S USBFS_CB_h2d_std_ifc_08 Def0000
+S USBFS_CB_d2h_std_ifc_08 Def0000
+S USBFS_CB_h2d_std_ifc_09 Def0000
+S USBFS_CB_d2h_std_ifc_09 Def0000
+S $lb$USBFS_DT_h2d_std_ep Def00E3
+S $lb$USBFS_DT_d2h_std_ep Def00AD
+S USBFS_CB_d2h_std_dev_00 Def0010
+S USBFS_CB_h2d_std_dev_00 Def0000
+S USBFS_CB_h2d_std_dev_01 Def0174
+S USBFS_CB_d2h_std_dev_01 Def0000
+S USBFS_CB_h2d_std_dev_02 Def0000
+S USBFS_CB_d2h_std_dev_02 Def0000
+S USBFS_CB_h2d_std_dev_03 Def017F
+S $le$USBFS_DT_h2d_std_ep Def010D
+S $le$USBFS_DT_d2h_std_ep Def00E3
+S USBFS_CB_d2h_std_dev_03 Def0000
+S USBFS_CB_h2d_std_dev_04 Def0000
+S USBFS_CB_d2h_std_dev_04 Def0000
+S USBFS_CB_h2d_std_dev_05 Def0194
+S USBFS_CB_d2h_std_dev_05 Def0000
+S USBFS_CB_d2h_std_dev_06 Def010D
+S USBFS_CB_h2d_std_dev_06 Def0000
+S USBFS_CB_h2d_std_dev_07 Def0000
+S USBFS_CB_d2h_std_dev_07 Def0000
+S USBFS_CB_d2h_std_dev_08 Def016B
+S USBFS_CB_h2d_std_dev_08 Def0000
+S USBFS_CB_h2d_std_dev_09 Def019D
+S $lb$GetStatusTransferDescrTable Def0007
+S $le$GetStatusTransferDescrTable Def0010
+S $lb$GetInterfaceTransferDescrTable Def0206
+S $le$GetInterfaceTransferDescrTable Def020F
+T 00 00 50 00 57 03 7D 00 00 00 01 00 02 00 00
+R 00 00 00 02 02 07 00 00 02 0D 00 08
+T 00 0D 00 00 DE 55 00 00 00 55 00 01 00 5F 00 00
+R 00 00 00 02 03 06 00 0B 03 0A 00 08 03 0E 00 08
+T 00 18 00 00 50 00 07 57 00 07 80 E9 8F F0 8F DE
+R 00 00 00 02 03 02 00 10 41 05 00 02 01 08 00 02
+T 00 23 8F DC 8F DA 8F D8 8F D6 80 E1 8F D2 81 3B
+R 00 00 00 02
+T 00 31 5D 39 39 09 D0 04 64 EF E6 8F C5 8F C3 81
+R 00 00 00 02
+T 00 3F 35 8F BF 81 3C 8F BB 81 4D 8F B7 8F B5 8F
+R 00 00 00 02
+T 00 4D B3 81 4E 5D 39 39 0A D0 04 64 EF E4 8F A6
+R 00 00 00 02
+T 00 5B 81 9B 8F A2 8F A0 8F 9E 8F 9C 8F 9A 8F 98
+R 00 00 00 02
+T 00 69 8F 96 8F 94 8F 92 81 9F 3C 00 00 00 B0 03
+R 00 00 00 02 03 0B 00 03
+T 00 76 8F 89 5D 39 39 0B D0 04 64 EF DB 8F 7E 8F
+R 00 00 00 02
+T 00 84 7C 8F 7A 8F 78 8F 76 8F 74 8F 72 8F 70 8F
+R 00 00 00 02
+T 00 92 6E 8F 6C 8F 6A 8F 68 8F 66 3C 00 00 00 B0
+R 00 00 00 02 03 0C 00 03
+T 00 9F 03 8F 5F 5D 39 39 0C D0 04 64 EF D9 8F 54
+R 00 00 00 02
+T 00 AD 81 75 8F 50 8F 4E 8F 4C 8F 4A 8F 48 8F 46
+R 00 00 00 02
+T 00 BB 8F 44 8F 42 8F 40 8F 3E 8F 3C 8F 3A 3C
+R 00 00 00 02
+T 00 C8 00 00 00 B0 0D 5D 3D 53 00 00 5D 3C 2C
+R 00 00 00 02 03 02 00 03 03 0A 00 0B
+T 00 D3 00 00 A0 03 8F 29 5D 39 39 0D D0 04 64 EF
+R 00 00 00 02 03 02 00 0B
+T 00 E0 CD 8F 1E 8F 1C 81 56 8F 18 81 87 3C 00 00
+R 00 00 00 02 03 0E 00 03
+T 00 ED 00 B0 0D 5D 3D 53 00 00 5D 3C 2C 00 00 A0
+R 00 00 00 02 03 08 00 0B 03 0D 00 0B
+T 00 F9 03 8F 05 5D 39 39 04 D0 04 64 EF DF 8E FA
+R 00 00 00 02
+T 01 07 7D 00 00 7D 00 00 5D 3B 64 39 08 DE ED E0
+R 00 00 00 02 02 03 00 11 02 06 00 02
+T 01 15 01 8E E9 80 28 80 03 80 34 90 00 4B 01 02
+R 00 00 00 02 06 0B 00 0C 00 00
+T 01 23 4B 09 00 55 00 00 00 00
+R 00 00 00 02 03 06 00 0B 03 08 00 0A
+T 01 29 90 00 51 00 00 58
+R 00 00 00 02 06 02 00 12 00 00 03 05 00 0A
+T 01 2E 00 01 08 5D 3A 53 00 00 18 08 28 3A 00 00
+R 00 00 00 02 03 02 00 0A 03 08 00 0B 03 0E 00 0B
+T 01 39 D0 04 18 8E C3 18 8F C7 5F 00 00 00 00 50
+R 00 00 00 02 03 0B 00 0B 03 0D 00 06
+T 01 45 00 00 57 00 00 28 3A 00 00 CE B4 50
+R 00 00 00 02 43 02 00 01 03 05 00 01 03 09 00 0B
+T 01 4E 00 00 8F B7 5D 3A 53 00 00 50 00 00 57
+R 00 00 00 02 43 02 00 01 03 09 00 0B 43 0C 00 04
+T 01 58 00 00 28 3A 00 00 CE A3 50 00 00 8F A6 00
+R 00 00 00 02 03 02 00 04 03 06 00 0B 43 0B 00 04
+T 01 63 01 00 01 00 00 00 00 DE 55 00 00 00 50
+R 00 00 00 02 02 05 00 03 03 0B 00 0B
+T 01 6F 01 62 57 01 62 8F 94 5D 3A 39 01 BE 87 26
+R 00 00 00 02 41 02 00 02 01 05 00 02
+T 01 7B 00 00 FD 8F 8C 5D 3A 39 01 A0 07 39 02 A0
+R 00 00 00 02 03 02 00 10
+T 01 88 08 8E 76 2E 00 00 02 80 03 8E 6F 8F 77 55
+R 00 00 00 02 03 06 00 10
+T 01 95 00 00 01 5D 3A 53 00 00 8F 6E
+R 00 00 00 02 03 02 00 09 03 08 00 08
+T 01 9D 90 00 55 00 00
+R 00 00 00 02 06 02 00 0C 00 00 03 05 00 0B
+T 01 A1 00 00 90 00 5D 3A 53
+R 00 00 00 02 03 02 00 0A 06 04 00 12 00 00
+T 01 A7 00 00 51 00 00 58 00 01 28 3A
+R 00 00 00 02 03 02 00 0B 03 05 00 0A 03 08 00 0A
+T 01 AE 00 00 CE 50 5F 00 00 00 00 3C
+R 00 00 00 02 03 02 00 0B 03 07 00 03 03 09 00 0B
+T 01 B5 00 00 00 A0 25 51 00 00 58 00 01 75 09 00
+R 00 00 00 02 03 02 00 0B 03 08 00 0A 03 0B 00 0A
+T 01 C0 55 00 00 00 00
+R 00 00 00 02 03 03 00 0B 03 05 00 0A
+T 01 C3 90 00 57 00 75 10 51 00 00 58
+R 00 00 00 02 06 02 00 12 00 00 03 09 00 0A
+T 01 CC 00 01 28 76 00 01 0E 00 00 00 20 90 C7 5B
+R 00 00 00 02 03 02 00 0A 03 06 00 0A 03 09 00 0A
+T 01 D7 39 08 BF ED 80 10 71 10 57 08 56 00 00 02
+R 00 00 00 02 03 0D 00 07
+T 01 E4 63 53 00 79 BF F8 70 EF 8F 1D 00 01 00 02
+R 00 00 00 02
+T 01 F2 00 00 00 00 DE 55 00 00 00 55 00 01 00 55
+R 00 00 00 02 02 02 00 08 03 08 00 08 03 0C 00 08
+T 01 FE 00 00 00 50 01 EE 57 01 EE 8F 02 00 01
+R 00 00 00 02 03 02 00 0B 41 06 00 02 01 09 00 02
+T 02 08 00 01 00 00 00 00 DE 5D 3C 39 02 DD EC 5C
+R 00 00 00 02 02 04 00 08
+T 02 16 52 00 00 53 00 00 55 00 00 00 50
+R 00 00 00 02 03 03 00 05 03 06 00 08 03 09 00 0B
+T 02 1E 02 06 57 02 06 8E E5 5D 3C 21 7F 39 09 DD
+R 00 00 00 02 41 02 00 02 01 05 00 02
+T 02 2A D6 5C 55 00 00 00 55 00 01 00 52 00 00 53
+R 00 00 00 02 03 05 00 0B 03 09 00 08 03 0D 00 0E
+T 02 35 00 00 50 00 07 57 00 07 8E CC 5D 3A 39 00
+R 00 00 00 02 03 02 00 08 41 05 00 02 01 08 00 02
+T 02 40 BD BF 5D 3C 21 7F 39 00 A0 24 39 09 DD B3
+R 00 00 00 02
+T 02 4E 5C 27 00 00 FE F0 00 31 FF 24
+R 00 00 00 02 03 04 00 0E 06 07 00 0D 00 00
+T 02 57 00 00 49 3C 80 71 10 B0 09 56 00 00 00 63
+R 00 00 00 02 03 02 00 0F 03 0C 00 07
+T 02 63 53 09 80 07 56 00 00 01 63 53 0C 70 EF 8E
+R 00 00 00 02 03 07 00 07
+T 02 70 9A 5D 3A 39 00 BD 8A 5D 3C 21 7F 39 00 A0
+R 00 00 00 02
+T 02 7E 1B 39 09 DD 7E 5C 2F 00 00 01 56 00 00 02
+R 00 00 00 02 03 09 00 0E 03 0D 00 07
+T 02 8A 49 3C 80 71 10 B0 06 63 53 89 80 04 63 53
+R 00 00 00 02
+T 02 98 8D 70 EF 8E 6E 39 7F B0 02 7F 08 5B 64 E0
+R 00 00 00 02
+T 02 A6 01 80 11 80 14 80 17 80 1A 80 1D 80 20 80
+R 00 00 00 02
+T 02 B4 23 80 26 80 29 43 DF 10 80 29 43 DF 20 80
+R 00 00 00 02
+T 02 C2 24 43 DF 40 80 1F 43 DF 80 80 1A 43 DE 01
+R 00 00 00 02
+T 02 D0 80 15 43 DE 02 80 10 43 DE 04 80 0B 43 DE
+R 00 00 00 02
+T 02 DE 08 80 06 43 DE 10 80 01 5B F0 00 31 FF 24
+R 00 00 00 02 06 0B 00 0D 00 00
+T 02 EC 00 00 27 00 00 FE 71 10 18 21 80 B0 09 63
+R 00 00 00 02 03 02 00 0F 03 05 00 0E
+T 02 F8 53 09 56 00 00 00 80 07 63 53 0C 56 00 00
+R 00 00 00 02 03 05 00 07 03 0E 00 07
+T 03 04 01 70 EF 7F
+R 00 00 00 02
+.end
+.start
+XH
+H 3 areas 3F global symbols
+M usbfs_drv.asm
+S USBFS_Not_Supported Ref0000
+S USBFS_DT_d2h_std_ep_Dispatch Ref0000
+S USBFS_DT_h2d_std_ep_Dispatch Ref0000
+S USBFS_DT_d2h_cls_ifc_Dispatch Ref0000
+S USBFS_DT_h2d_cls_ifc_Dispatch Ref0000
+S USBFS_DT_d2h_std_ifc_Dispatch Ref0000
+S USBFS_DT_h2d_std_ifc_Dispatch Ref0000
+S USBFS_DT_d2h_std_dev_Dispatch Ref0000
+S USBFS_DT_h2d_std_dev_Dispatch Ref0000
+S USBFS_DEVICE_LOOKUP Ref0000
+A text size 0 flags 0
+dbfile lib/usbfs_drv.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/USBFS.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs_drv.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/USBFS_macros.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs_drv.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs_drv.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 2F flags 20
+S _USBFS_EndpointStatus Def0005
+S USBFS_LastSize Def000E
+S _USBFS_DeviceStatus Def0002
+S _USBFS_TransferSize Def0019
+S _USBFS_DataSource Def0018
+S USBFS_Configuration Def0001
+S USBFS_InterfaceSetting Def0003
+S USBFS_EPDataToggle Def0021
+S USBFS_CurrentTD Def0018
+S USBFS_bCurrentDevice Def0000
+S USBFS_EndpointAPIStatus Def0026
+S USBFS_TransferBuffer Def0010
+S USBFS_t0 Def0025
+S USBFS_t1 Def0024
+S USBFS_fDataPending Def0022
+S USBFS_StatusBlockPtr Def001D
+S USBFS_t2 Def0023
+S USBFS_DataPtr Def001B
+S _USBFS_Configuration Def0001
+S USBFS_EndpointStatus Def0005
+S _USBFS_InterfaceSetting Def0003
+S _USBFS_EPDataToggle Def0021
+S USBFS_DeviceStatus Def0002
+S _USBFS_CurrentTD Def0018
+S USBFS_TransferSize Def0019
+S USBFS_TransferType Def000F
+S USBFS_DataSource Def0018
+S _USBFS_bCurrentDevice Def0000
+S _USBFS_EndpointAPIStatus Def0026
+S _USBFS_StatusBlockPtr Def001D
+S _USBFS_DataPtr Def001B
+A UserModules size 290 flags 0
+dbfile lib/usbfs_drv.asm
+dbfunc 0 ? 0 I
+dbline D3 0
+dbline D4 1
+dbline 2 2
+dbline 3 4
+dbline 2 5
+dbline 3 7
+dbline 3 8
+dbline 3 B
+dbline DC E
+dbline E1 10
+dbline E2 11
+dbline E4 13
+dbline E5 14
+dbline E7 16
+dbline E8 17
+dbline EA 19
+dbline F1 1B
+dbline F2 1D
+dbline F3 1E
+dbline 2 20
+dbline 3 21
+dbline 2 23
+dbline 3 24
+dbline F9 26
+dbline FC 27
+dbline FD 28
+dbline 109 29
+dbline 10A 2A
+dbline 10B 2C
+dbline 10C 2E
+dbline 10D 2F
+dbline 10E 31
+dbline 10F 33
+dbline 111 35
+dbline 11D 37
+dbline 11E 39
+dbline 11F 3B
+dbline 120 3C
+dbline 121 3D
+dbline 122 3E
+dbline 123 3F
+dbline 124 41
+dbline 125 42
+dbline 126 44
+dbline 12B 46
+dbline 138 49
+dbline 13C 4B
+dbline 13F 4D
+dbline 140 4F
+dbline 141 51
+dbline 142 53
+dbline 14F 55
+dbline 150 57
+dbline 153 59
+dbline 154 5B
+dbline 155 5D
+dbline 156 5F
+dbline 164 61
+dbline 165 63
+dbline 166 65
+dbline 169 68
+dbline 16A 6A
+dbline 16B 6C
+dbline 16D 6E
+dbline 16E 70
+dbline 16F 72
+dbline 171 74
+dbline 173 76
+dbline 174 78
+dbline 175 7A
+dbline 177 7C
+dbline 178 7F
+dbline 17A 82
+dbline 17B 85
+dbline 186 87
+dbline 192 89
+dbline 193 8B
+dbline 194 8D
+dbline 195 90
+dbline 196 92
+dbline 197 94
+dbline 198 97
+dbline 199 99
+dbline 19A 9B
+dbline 1A6 9D
+dbline 1A8 9F
+dbline 1AA A2
+dbline 1AB A4
+dbline 1AC A6
+dbline 1B9 A8
+dbline 1BA AA
+dbline 1BB AC
+dbline 1BD AE
+dbline 1BF B0
+dbline 1C1 B3
+dbline 1C3 B6
+dbline 1C4 B8
+dbline 1C5 BA
+dbline 1D2 BC
+dbline 1D4 BF
+dbline 1D6 C1
+dbline 1D7 C3
+dbline 1D9 C5
+dbline 1DB C7
+dbline 1DC C9
+dbline 1DD CB
+dbline 1DF CD
+dbline 1E0 CF
+dbline 1E1 D1
+dbline 1E3 D3
+dbline 1E4 D5
+dbline 1E7 D8
+dbline 1E8 DA
+dbline 1E9 DC
+dbline 1EB DF
+dbline 1EC E1
+dbline 1EE E4
+dbline 2 E6
+dbline 3 E8
+dbline 1F2 E9
+dbline 1F3 EB
+dbline 1F7 ED
+dbline 1F8 EF
+dbline 1FA F1
+dbline 1FB F2
+dbline 1FC F3
+dbline 1FD F5
+dbline 2 F7
+dbline 3 F8
+dbline 203 FA
+dbline 204 FC
+dbline 205 FE
+dbline 209 100
+dbline 20A 103
+dbline 20B 105
+dbline 20C 107
+dbline 219 109
+dbline 21A 10B
+dbline 21B 10D
+dbline 21C 110
+dbline 21D 112
+dbline 21E 114
+dbline 22E 116
+dbline 22F 118
+dbline 231 11A
+dbline 232 11D
+dbline 235 11F
+dbline 237 121
+dbline 238 123
+dbline 239 125
+dbline 23D 127
+dbline 23F 12A
+dbline 240 12C
+dbline 241 12E
+dbline 24C 130
+dbline 24D 132
+dbline 24E 134
+dbline 24F 136
+dbline 250 138
+dbline 25C 13A
+dbline 25D 13C
+dbline 25E 13E
+dbline 25F 141
+dbline 260 143
+dbline 261 145
+dbline 264 147
+dbline 265 14A
+dbline 268 14C
+dbline 269 14E
+dbline 26A 150
+dbline 26B 152
+dbline 26F 154
+dbline 270 157
+dbline 272 159
+dbline 273 15C
+dbline 275 15E
+dbline 276 160
+dbline 279 162
+dbline 27D 164
+dbline 27E 166
+dbline 27F 169
+dbline 280 16B
+dbline 282 16D
+dbline 283 170
+dbline 287 172
+dbline 288 173
+dbline 289 175
+dbline 28A 177
+dbline 28B 179
+dbline 28D 17C
+dbline 28F 17D
+dbline 290 17E
+dbline 291 180
+dbline 292 181
+dbline 293 182
+dbline 294 184
+dbline 295 186
+dbline 2 188
+dbline 3 18A
+dbline 29B 18B
+dbline 29C 18D
+dbline 29F 18F
+dbline 2A1 191
+dbline 2A2 193
+dbline 2A3 194
+dbline 2A4 195
+dbline 2A5 197
+dbline 2 199
+dbline 3 19A
+dbline 2A9 19C
+dbline 2AF 19D
+dbline 2B1 19F
+dbline 2B2 1A1
+dbline 2B3 1A3
+dbline 2B4 1A5
+dbline 2B7 1A7
+dbline 2B8 1A9
+dbline 2BA 1AC
+dbline 2BB 1AE
+dbline 2CD 1B0
+dbline 2CE 1B1
+dbline 2 1B3
+dbline 3 1B4
+dbline 4 1B6
+dbline 5 1B8
+dbline 6 1BA
+dbline 2D2 1BB
+dbline 2D3 1BC
+dbline 2D4 1BE
+dbline 2D5 1BF
+dbline 2D8 1C1
+dbline 2D9 1C4
+dbline 2DA 1C6
+dbline 2DB 1C8
+dbline 2DC 1CA
+dbline 2DE 1CC
+dbline 2DF 1CE
+dbline 2E0 1D0
+dbline 2E2 1D2
+dbline 2E5 1D4
+dbline 2FB 1D6
+dbline 2FC 1D7
+dbline 2 1D9
+dbline 3 1DB
+dbline 2FF 1DD
+dbline 300 1DE
+dbline 301 1E0
+dbline 302 1E1
+dbline 303 1E3
+dbline 31B 1E4
+dbline 31C 1E5
+dbline 31D 1E6
+dbline 31E 1E8
+dbline 31F 1E9
+dbline 320 1EA
+dbline 325 1EC
+dbline 326 1ED
+dbline 327 1EE
+dbline 328 1F0
+dbline 329 1F1
+dbline 32A 1F2
+dbline 32B 1F4
+dbline 342 1F5
+dbline 344 1F8
+dbline 345 1FA
+dbline 346 1FC
+dbline 347 1FD
+dbline 348 1FF
+dbline 349 201
+dbline 34B 203
+dbline 34E 205
+dbline 366 206
+dbline 367 208
+dbline 368 20B
+dbline 36A 20D
+dbline 36B 20F
+dbline 36C 211
+dbline 36D 213
+dbline 370 215
+dbline 371 218
+dbline 372 21A
+dbline 373 21C
+dbline 38D 21D
+dbline 38E 21F
+dbline 38F 220
+dbline 390 222
+dbline 392 224
+dbline 393 225
+dbline 394 227
+dbline 395 229
+dbline 396 22B
+dbline 397 22D
+dbline 398 22F
+dbline 39A 232
+dbline 3AF 233
+dbline 3B0 235
+dbline 3B1 237
+dbline 3B3 239
+dbline 3B4 23A
+dbline 3B5 23D
+dbline 3B6 240
+dbline 3B8 243
+dbline 3 244
+dbline 3 246
+dbline 3 248
+dbline 5 24A
+dbline 5 24C
+dbline 3 24E
+dbline 5 250
+dbline 5 252
+dbline 5 254
+dbline 5 256
+dbline 5 258
+dbline 5 25A
+dbline 5 25C
+dbline 5 25E
+dbline 5 260
+dbline 5 262
+dbline 3 264
+dbline 3 266
+dbline 3 268
+dbline 5 26A
+dbline 5 26C
+dbline 3 26E
+dbline 5 270
+dbline 5 272
+dbline 5 274
+dbline 5 276
+dbline 5 278
+dbline 5 27A
+dbline 5 27C
+dbline 5 27E
+dbline 5 280
+dbline 5 282
+dbline 2 284
+dbline 3 286
+dbline 4 288
+dbline 5 289
+dbline 7 28B
+dbline 3FA 28D
+S USBFS_EP0_UPD_MODE_EXIT Def001B
+S _USBFS_InitNoDataStageControlTransfer Def009D
+S $lb$USBFS_ControlOutDispatchTable Def0059
+S $le$USBFS_ControlOutDispatchTable Def0061
+S _USBFS_InitControlRead Def0061
+S USBFS_DT_bmRequestType Def0244
+S USBFS_NoDataStageControlTransfer Def009D
+S _USBFS_EP0_ISR Def0000
+S USBFS_InitControlWrite Def00A8
+S USBFS_GET_DEVICE_TABLE_ENTRY Def01F5
+S USBFS_GET_CONFIG_TABLE_ENTRY Def0206
+S $lb$USBFS_ControlInDispatchTable Def004D
+S $le$USBFS_ControlInDispatchTable Def0055
+S USBFS_LOOKUP Def01D6
+S _USBFS_InitControlWrite Def00A8
+S USBFS_InitNoDataStageControlTransfer Def009D
+S USBFS_bmRequestType_Dispatch Def0284
+S USBFS_InitControlRead Def0061
+S USBFS_EP0_ISR Def0000
+S USBFS_GETBYTE Def01EC
+S USBFS_GetTableEntry Def01B0
+S USBFS_GETWORD Def01E4
+T 00 00 08 10 5D D5 08 5D D4 08 62 D5 00 62 D4 00
+R 00 00 00 02
+T 00 0E 5D 36 64 C0 17 64 C0 34 64 C0 3D 82 73 60
+R 00 00 00 02
+T 00 1C 37 5B 60 36 18 60 D4 18 60 D5 20 18 7E 08
+R 00 00 00 02
+T 00 2A 50 02 91 EF 18 5D 37 39 4A A0 03 82 57 5D
+R 00 00 00 02
+T 00 38 38 21 E3 08 67 67 67 53 00 23 18 2A 00 23
+R 00 00 00 02 01 0A 00 01 01 0E 00 01
+T 00 44 21 1F 7D 02 84 51 00 0F E0 01 82 3F 80 37
+R 00 00 00 02 00 05 00 02 01 08 00 01
+T 00 51 80 B7 80 C2 51 00 0F E0 01 82 33 80 2D 80
+R 00 00 00 02 01 07 00 01
+T 00 5E 5E 80 D0 53 00 0E 91 CE 55 00 0F 02 5D 3F
+R 00 00 00 02 01 06 00 01 01 0B 00 01
+T 00 6A 3A 00 19 B0 07 5D 3E 3A 00 1A A0 09 D0 07
+R 00 00 00 02 01 03 00 01 01 0A 00 01
+T 00 76 53 00 1A 5D 3F 53 00 19 55 00 1F 00 55
+R 00 00 00 02 01 03 00 01 01 08 00 01 01 0B 00 01
+T 00 80 00 20 00 2E 00 21 01 80 B4 80 B2 51 00 0E
+R 00 00 00 02 01 02 00 01 01 06 00 01 01 0E 00 01
+T 00 8B 04 00 20 0E 00 1F 00 50 01 91 89 55 00 0F
+R 00 00 00 02 01 03 00 01 01 06 00 01 01 0E 00 01
+T 00 96 00 50 00 57 03 8F 7F 91 94 55 00 0F 06 50
+R 00 00 00 02 01 0C 00 01
+T 00 A3 00 57 06 8F 74 51 00 18 39 00 A1 E0 91 83
+R 00 00 00 02 01 08 00 01
+T 00 B0 55 00 0F 04 2E 00 21 01 50 00 57 0B 8F 60
+R 00 00 00 02 01 03 00 01 01 07 00 01
+T 00 BC 36 00 21 01 5D 37 21 0F 11 02 53 00 23 50
+R 00 00 00 02 01 03 00 01 01 0D 00 01
+T 00 C8 00 3A 00 19 B0 07 51 00 23 3A 00 1A A0 06
+R 00 00 00 02 01 04 00 01 01 09 00 01 01 0C 00 01
+T 00 D3 C0 04 5F 00 23 00 1A 51 00 23 14
+R 00 00 00 02 01 05 00 01 01 07 00 01 01 0A 00 01
+T 00 DB 00 1A 1E 00 19 00 04 00 20 0E
+R 00 00 00 02 01 02 00 01 01 05 00 01 01 09 00 01
+T 00 E2 00 1F 00 57 00 5D D5 08 51 00 1B 60 D5 5E
+R 00 00 00 02 01 02 00 01 01 0B 00 01
+T 00 EE 38 3F 00 1C 75 5B 3A 00 23 CF F7 18 60 D5
+R 00 00 00 02 01 04 00 01 01 09 00 01
+T 00 FA 50 00 57 0B 8F 1C 55 00 0F 00 50 00 57 03
+R 00 00 00 02 01 09 00 01
+T 01 07 8F 13 50 01 91 10 55 00 0F 00 50 00 57 03
+R 00 00 00 02 01 09 00 01
+T 01 14 8F 06 50 01 91 03 3C 00 22 01 B0 09 51
+R 00 00 00 02 01 09 00 01
+T 01 20 00 10 29 80 60 33 80 01 55 00 22 00 50 00
+R 00 00 00 02 01 02 00 01 01 0B 00 01
+T 01 2C 57 06 8E EC 50 03 90 E9 50 00 57 03 8E E2
+R 00 00 00 02
+T 01 3A 51 00 0E 04 00 20 0E 00 1F 00 51
+R 00 00 00 02 01 03 00 01 01 06 00 01 01 09 00 01
+T 01 42 00 19 2A 00 1A B0 0E 3C 00 0E 08 A0 52 50
+R 00 00 00 02 01 02 00 01 01 05 00 01 01 0A 00 01
+T 01 4D 00 53 00 0E 57 02 8E C8 3C 00 19 00 B0 0A
+R 00 00 00 02 01 04 00 01 01 0B 00 01
+T 01 59 3C 00 1A 08 D0 05 51 00 1A 80 03 50 08 14
+R 00 00 00 02 01 03 00 01 01 09 00 01
+T 01 65 00 1A 1E 00 19 00 53 00 23 57 00 3C
+R 00 00 00 02 01 02 00 01 01 05 00 01 01 09 00 01
+T 01 6E 00 18 00 B0 17 10 51 00 1B 58 00 1C 76
+R 00 00 00 02 01 02 00 01 01 09 00 01 01 0C 00 01
+T 01 78 00 1C 0E 00 1B 00 28 20 61 38 75 5B 3A
+R 00 00 00 02 01 02 00 01 01 05 00 01
+T 01 83 00 23 CF ED 80 16 5D D4 08 51 00 1B 60 D4
+R 00 00 00 02 01 02 00 01 01 0C 00 01
+T 01 8F 3E 00 1C 61 38 75 5B 3A 00 23 CF F7 18 60
+R 00 00 00 02 01 03 00 01 01 0A 00 01
+T 01 9B D4 5B 53 00 0E 50 01 22 00 21 A0 03 50 80
+R 00 00 00 02 01 05 00 01 01 0A 00 01
+T 01 A7 2A 00 0E 36 00 21 01 57 0F 8E 6C 75 09 00
+R 00 00 00 02 01 03 00 01 01 06 00 01
+T 01 B3 08 65 00 23 65 00 23 65 00 23 18 4B 02
+R 00 00 00 02 01 04 00 01 01 07 00 01 01 0A 00 01
+T 01 BD 00 23 4B 09 00 55 00 23 00 18 90 26 90 1C
+R 00 00 00 02 01 02 00 01 01 08 00 01 01 0A 00 01
+T 01 C8 90 1A 90 18 5D 38 21 80 A0 03 8E 8E 8E D3
+R 00 00 00 02
+T 01 D6 75 09 00 65 00 23 65 00 23 4B 02 00 23 4B
+R 00 00 00 02 01 06 00 01 01 09 00 01 01 0D 00 01
+T 01 E1 09 00 7F 08 28 3F 00 23 18 75 09 00 08 28
+R 00 00 00 02 01 08 00 01
+T 01 EE 3F 00 23 18 75 09 00 7F 5F 00 23 00 00 50
+R 00 00 00 02 01 03 00 01 01 0B 00 01 01 0D 00 01
+T 01 F9 00 00 57 00 00 28 3A 00 23 50
+R 00 00 00 02 43 02 00 09 03 05 00 09 01 09 00 01
+T 02 00 00 00 C0 03 9F D1 7F 9F ED 55 00 23 00 24
+R 00 00 00 02 43 02 00 09 01 0C 00 01 01 0E 00 01
+T 02 0B 9F D7 5D 3A 53 00 23 51 00 24 58 00 25 5F
+R 00 00 00 02 01 07 00 01 01 0A 00 01 01 0D 00 01
+T 02 16 00 23 00 01 7A 00 23 9F BA 7F 58
+R 00 00 00 02 01 02 00 01 01 04 00 01 01 07 00 01
+T 02 1E 00 1E 4B 39 00 A0 0F 4B 54 00 51 00 1F 54
+R 00 00 00 02 01 02 00 01 01 0D 00 01
+T 02 2A 01 51 00 20 54 02 55 00 1E 00 7F 51 00 1E
+R 00 00 00 02 01 04 00 01 01 09 00 01 01 0E 00 01
+T 02 35 39 00 A0 0B 4B 56 00 00 55 00 1F 00 55
+R 00 00 00 02 01 0B 00 01
+T 02 41 00 20 00 7F 80 00
+R 00 00 00 02 01 02 00 01 06 06 00 08 00 01
+T 02 46 80 00 80 00 80 42 80 40
+R 00 00 00 02 06 02 00 06 00 01 06 04 00 02 00 01
+T 02 4E 80 00 80 3C 80 3A 80 38 80 36 80 34 80 32
+R 00 00 00 02 06 02 00 04 00 01
+T 02 5C 80 30 80 2E 80 2C 80 2A 80 00 80 00
+R 00 00 00 02 06 0A 00 07 00 01 06 0C 00 05 00 01
+T 02 68 80 00 80 22 80 20 80 00 80 1C 80 1A 80 18
+R 00 00 00 02 06 02 00 01 00 01 06 08 00 03 00 01
+T 02 76 80 16 80 14 80 12 80 10 80 0E 80 0C 80 0A
+R 00 00 00 02
+T 02 84 39 20 D0 04 64 EF BA 80 01 7D 00 00
+R 00 00 00 02 02 0C 00 00
+.end
+.start
+XH
+H 3 areas 18 global symbols
+M usbfs_descr.asm
+A text size 0 flags 0
+dbfile lib/usbfs_descr.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/USBFS_macros.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs_descr.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/USBFS.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs_descr.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A UserModules size AA flags 0
+S $lb$USBFS_D0_DESCR_START Def0000
+S $le$USBFS_D0_DESCR_START Def0055
+S USBFS_StringTable Def0055
+S $lb$USBFS_StringTable Def0055
+S $le$USBFS_StringTable Def00AA
+A func_lit size 39 flags 0
+S $lb$USBFS_D0_CONFIG_DESCR_TABLE Def0027
+S $le$USBFS_D0_CONFIG_DESCR_TABLE Def0030
+S $lb$USBFS_D0_C1_EP_SETUP Def000A
+S $le$USBFS_D0_C1_EP_SETUP Def0012
+S USBFS_DEVICE_DESCR_TABLE Def0030
+S $lb$USBFS_DEVICE_DESCR_TABLE Def0030
+S $le$USBFS_DEVICE_DESCR_TABLE Def0039
+S USBFS_D0_CONFIG_LOOKUP Def0005
+S USBFS_D0_C1_INTERFACE_RPT_LOOKUP Def0012
+S $lb$USBFS_D0_CONFIG_LOOKUP Def0005
+S $lb$USBFS_D0_C1_INTERFACE_RPT_LOOKUP Def0012
+S $le$USBFS_D0_CONFIG_LOOKUP Def000A
+S $le$USBFS_D0_C1_INTERFACE_RPT_LOOKUP Def0016
+S USBFS_D0_C1_HID_CLASS_DESCR_TABLE Def0016
+S USBFS_DEVICE_LOOKUP Def0000
+S $lb$USBFS_D0_C1_HID_CLASS_DESCR_TABLE Def0016
+S $lb$USBFS_DEVICE_LOOKUP Def0000
+S $le$USBFS_D0_C1_HID_CLASS_DESCR_TABLE Def0027
+S $le$USBFS_DEVICE_LOOKUP Def0005
+T 00 00 01 00 05 00 27
+R 00 00 00 02 00 03 00 02 00 05 00 02
+T 00 05 01 00 0A 00 00
+R 00 00 00 02 00 03 00 02
+T 00 0A 80 80 00 7F 7F 7F 7F 7F 00 00 00 00
+R 00 00 00 02
+T 00 16 01 00 00 00 00 00 00 00 DE 00 00 00 00 00
+R 00 00 00 02
+T 00 24 00 00 DE
+R 00 00 00 02
+T 00 27 00 00 00 43 00 12 00 00 DE
+R 00 00 00 02 00 06 00 01
+T 00 30 00 00 00 12 00 00 00 00 DE
+R 00 00 00 02 00 06 00 01
+T 00 00 12 01 00 02 02 00 00 08 55 F0 74 27 01 00
+R 00 00 00 01
+T 00 0E 02 01 00 01 09 02 43 00 02 01 00 C0 00 09
+R 00 00 00 01
+T 00 1C 04 00 00 01 02 02 01 00 05 24 00 10 01 04
+R 00 00 00 01
+T 00 2A 24 02 02 05 24 06 00 01 05 24 01 00 01 07
+R 00 00 00 01
+T 00 38 05 81 03 10 00 02 09 04 01 00 02 0A 00 00
+R 00 00 00 01
+T 00 46 00 07 05 82 02 40 00 00 07 05 03 02 40 00
+R 00 00 00 01
+T 00 54 FF
+R 00 00 00 01
+T 00 55 02 00 00 04 00 6E 00 00 DE 00 00 16 00 72
+R 00 00 00 01 00 06 00 01 00 0E 00 01
+T 00 63 00 00 DE 00 00 22 00 88 00 00 DE 04 03
+R 00 00 00 01 00 08 00 01
+T 00 70 09 04 16 03 4C 00 69 00 67 00 68 00 74 00
+R 00 00 00 01
+T 00 7E 75 00 69 00 6E 00 6F 00 34 00 22 03 54 00
+R 00 00 00 01
+T 00 8C 6F 00 61 00 73 00 74 00 65 00 64 00 20 00
+R 00 00 00 01
+T 00 9A 43 00 69 00 72 00 63 00 75 00 69 00 74 00
+R 00 00 00 01
+T 00 A8 73 00
+R 00 00 00 01
+.end
+.start
+XH
+H 3 areas 50 global symbols
+M usbfs.asm
+S USBFS_Configuration Ref0000
+S USBFS_bCurrentDevice Ref0000
+S USBFS_EndpointAPIStatus Ref0000
+S USBFS_DeviceStatus Ref0000
+S USBFS_TransferType Ref0000
+A text size 0 flags 0
+dbfile lib/usbfs.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/USBFS.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/USBFS_macros.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/usbfs.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 6 flags 20
+S _USBFS_EPXDataToggle Def0000
+S _USBFS_APIEPNumber Def0003
+S _USBFS_APICount Def0004
+S USBFS_APITemp Def0001
+S USBFS_bActivity Def0005
+S USBFS_EPXDataToggle Def0000
+S USBFS_APIEPNumber Def0003
+S USBFS_APICount Def0004
+S _USBFS_bActivity Def0005
+A UserModules size 32C flags 0
+dbfile lib/usbfs.asm
+dbfunc 0 ? 9 I
+dbline 3 9
+dbline 3 B
+dbline 3 E
+dbline 9B 11
+dbline 2 12
+dbline 9D 14
+dbline 9E 17
+dbline 2 1A
+dbline A0 1C
+dbline A1 1F
+dbline A3 22
+dbline A5 24
+dbline A6 27
+dbline A7 2A
+dbline A9 2D
+dbline AB 30
+dbline AC 33
+dbline AD 36
+dbline AE 39
+dbline B8 3C
+dbline B9 3F
+dbline BC 42
+dbline BD 43
+dbline 2 45
+dbline BF 47
+dbline 2 49
+dbline C2 4B
+dbline 2 4E
+dbline C6 51
+dbline 3 54
+dbline 4 56
+dbline CA 58
+dbline 3 59
+dbline E5 5C
+dbline E7 5F
+dbline E8 62
+dbline E9 65
+dbline EA 68
+dbline EC 6B
+dbline ED 6E
+dbline EE 71
+dbline F1 74
+dbline 2 75
+dbline 10A 77
+dbline 10B 79
+dbline 10C 7B
+dbline 10E 7D
+dbline 10F 7F
+dbline 112 81
+dbline 115 83
+dbline 2 86
+dbline 118 88
+dbline 3 89
+dbline 132 8C
+dbline 134 8E
+dbline 3 8F
+dbline 3 91
+dbline 14E 94
+dbline 14F 96
+dbline 151 98
+dbline 152 99
+dbline 153 9B
+dbline 156 9D
+dbline 3 9F
+dbline 4 A1
+dbline 15A A3
+dbline 3 A4
+dbline 175 A7
+dbline 176 AA
+dbline 178 AC
+dbline 179 AE
+dbline 17C B0
+dbline 180 B2
+dbline 19A B3
+dbline 19B B5
+dbline 19D B7
+dbline 19E B8
+dbline 19F B9
+dbline 1A0 BA
+dbline 1A1 BC
+dbline 1A2 BE
+dbline 1A4 BF
+dbline 1A5 C1
+dbline 1A6 C3
+dbline 1A7 C4
+dbline 1A8 C5
+dbline 1AB C7
+dbline 1AF C9
+dbline 1DC CA
+dbline 1DD CC
+dbline 1DE CD
+dbline 1E1 CF
+dbline 1E2 D1
+dbline 3 D2
+dbline 3 D4
+dbline 3 D7
+dbline 1E9 DA
+dbline 1EA DB
+dbline 1EB DD
+dbline 1EC DF
+dbline 1EF E1
+dbline 1F0 E3
+dbline 1F1 E5
+dbline 1F2 E7
+dbline 1F3 E9
+dbline 1F7 EB
+dbline 1F8 EC
+dbline 1F9 EE
+dbline 1FD F0
+dbline 1FE F2
+dbline 1FF F4
+dbline 200 F5
+dbline 201 F7
+dbline 202 F8
+dbline 203 FA
+dbline 204 FB
+dbline 205 FC
+dbline 208 FD
+dbline 20B FF
+dbline 20C 101
+dbline 20D 103
+dbline 20E 104
+dbline 20F 106
+dbline 210 107
+dbline 211 109
+dbline 214 10A
+dbline 215 10B
+dbline 216 10D
+dbline 218 10F
+dbline 219 112
+dbline 21B 114
+dbline 21F 117
+dbline 220 118
+dbline 221 11A
+dbline 222 11B
+dbline 223 11C
+dbline 224 11D
+dbline 225 11F
+dbline 226 121
+dbline 227 123
+dbline 22C 125
+dbline 22D 126
+dbline 22E 128
+dbline 2 129
+dbline 232 12B
+dbline 233 12D
+dbline 237 12F
+dbline 23B 131
+dbline 23C 134
+dbline 2 136
+dbline 23E 138
+dbline 2 13A
+dbline 240 13C
+dbline 242 13E
+dbline 243 140
+dbline 246 142
+dbline 247 144
+dbline 248 147
+dbline 2 149
+dbline 24A 14B
+dbline 2 14D
+dbline 24C 14F
+dbline 24E 151
+dbline 2 153
+dbline 253 155
+dbline 254 156
+dbline 255 159
+dbline 256 15B
+dbline 257 15D
+dbline 259 15F
+dbline 25A 161
+dbline 25E 162
+dbline 25F 163
+dbline 262 165
+dbline 263 167
+dbline 266 169
+dbline 268 16B
+dbline 26A 16D
+dbline 26D 16E
+dbline 26E 170
+dbline 26F 172
+dbline 270 173
+dbline 271 175
+dbline 272 177
+dbline 276 179
+dbline 278 17B
+dbline 27A 17D
+dbline 27D 17E
+dbline 27E 180
+dbline 27F 182
+dbline 280 183
+dbline 281 185
+dbline 3 187
+dbline 286 18A
+dbline 287 18B
+dbline 288 18D
+dbline 2 18E
+dbline 28C 190
+dbline 28D 192
+dbline 291 194
+dbline 295 196
+dbline 296 199
+dbline 2 19B
+dbline 298 19D
+dbline 2 19F
+dbline 29B 1A1
+dbline 29D 1A3
+dbline 29F 1A5
+dbline 2A2 1A7
+dbline 2A3 1A9
+dbline 2A4 1AC
+dbline 2 1AE
+dbline 2A6 1B0
+dbline 2 1B2
+dbline 2A8 1B4
+dbline 2AA 1B6
+dbline 2 1B8
+dbline 2AE 1BA
+dbline 2AF 1BB
+dbline 2B0 1BC
+dbline 2B1 1BE
+dbline 3 1BF
+dbline 2B5 1C2
+dbline 2B6 1C5
+dbline 2B8 1C7
+dbline 2 1CA
+dbline 2BB 1CC
+dbline 2 1CE
+dbline 2C1 1D0
+dbline 3 1D1
+dbline 4 1D3
+dbline 2C4 1D5
+dbline 2DE 1D6
+dbline 2DF 1D8
+dbline 2E0 1D9
+dbline 2E3 1DB
+dbline 2E4 1DD
+dbline 3 1DE
+dbline 3 1E0
+dbline 2E9 1E3
+dbline 2EA 1E5
+dbline 2EB 1E7
+dbline 2EC 1E9
+dbline 2EE 1EB
+dbline 2F1 1EC
+dbline 2F2 1EF
+dbline 2F4 1F1
+dbline 2F5 1F2
+dbline 2F6 1F5
+dbline 2F7 1F6
+dbline 2F8 1F7
+dbline 2F9 1F8
+dbline 2FC 1FB
+dbline 2FD 1FC
+dbline 2FE 1FD
+dbline 2FF 1FF
+dbline 2 201
+dbline 303 203
+dbline 304 204
+dbline 305 206
+dbline 309 208
+dbline 2 20A
+dbline 30F 20C
+dbline 310 20D
+dbline 311 20F
+dbline 313 211
+dbline 314 213
+dbline 316 214
+dbline 2 216
+dbline 318 218
+dbline 31B 21A
+dbline 3 21B
+dbline 4 21D
+dbline 31E 21F
+dbline 337 220
+dbline 338 222
+dbline 339 224
+dbline 33A 226
+dbline 33C 228
+dbline 2 229
+dbline 33E 22B
+dbline 33F 22D
+dbline 2 230
+dbline 343 232
+dbline 35E 233
+dbline 35F 235
+dbline 3 236
+dbline 3 238
+dbline 3 23B
+dbline 38C 23E
+dbline 38D 23F
+dbline 38E 241
+dbline 38F 243
+dbline 392 245
+dbline 393 247
+dbline 394 249
+dbline 395 24B
+dbline 396 24D
+dbline 399 24F
+dbline 39A 251
+dbline 39B 252
+dbline 39C 253
+dbline 39D 254
+dbline 39E 256
+dbline 39F 258
+dbline 3A0 25A
+dbline 3A1 25C
+dbline 3A2 25E
+dbline 3A3 260
+dbline 3A4 262
+dbline 3A5 264
+dbline 3A7 266
+dbline 3A8 268
+dbline 3A9 26A
+dbline 3AA 26D
+dbline 3AC 26F
+dbline 3AD 271
+dbline 3AE 273
+dbline 3AF 275
+dbline 3B0 277
+dbline 3B4 279
+dbline 3B5 27A
+dbline 3B6 27C
+dbline 2 27D
+dbline 3BA 27F
+dbline 3BB 281
+dbline 3BF 283
+dbline 3C0 285
+dbline 3C1 288
+dbline 2 28A
+dbline 3C3 28C
+dbline 2 28E
+dbline 3C5 290
+dbline 3C7 292
+dbline 3C8 294
+dbline 3CB 296
+dbline 3CC 298
+dbline 3CD 29B
+dbline 2 29D
+dbline 3CF 29F
+dbline 2 2A1
+dbline 3D1 2A3
+dbline 3D3 2A5
+dbline 2 2A7
+dbline 3D8 2A9
+dbline 3D9 2AC
+dbline 3DA 2AE
+dbline 3DB 2B0
+dbline 3E1 2B2
+dbline 3E2 2B3
+dbline 3E4 2B5
+dbline 3E5 2B7
+dbline 3EA 2B9
+dbline 3EB 2BA
+dbline 3EC 2BC
+dbline 3EE 2BD
+dbline 3EF 2BF
+dbline 3F1 2C1
+dbline 2 2C2
+dbline 3F7 2C4
+dbline 3F8 2C6
+dbline 3F9 2C7
+dbline 3FA 2C9
+dbline 3FB 2CB
+dbline 2 2CD
+dbline 3FF 2CF
+dbline 400 2D1
+dbline 401 2D3
+dbline 402 2D4
+dbline 403 2D6
+dbline 405 2D8
+dbline 409 2DA
+dbline 40A 2DB
+dbline 40B 2DD
+dbline 40D 2DE
+dbline 40E 2E0
+dbline 410 2E2
+dbline 2 2E3
+dbline 416 2E5
+dbline 417 2E7
+dbline 418 2E8
+dbline 419 2EA
+dbline 41A 2EC
+dbline 2 2EE
+dbline 41E 2F0
+dbline 41F 2F2
+dbline 420 2F4
+dbline 421 2F5
+dbline 422 2F7
+dbline 428 2F9
+dbline 2 2FA
+dbline 42A 2FC
+dbline 2 2FE
+dbline 3 300
+dbline 431 303
+dbline 432 304
+dbline 433 306
+dbline 434 307
+dbline 435 308
+dbline 436 309
+dbline 437 30B
+dbline 3 30D
+dbline 4 30F
+dbline 43C 311
+dbline 455 312
+dbline 2 313
+dbline 457 315
+dbline 2 317
+dbline 459 319
+dbline 45A 31B
+dbline 3 31C
+dbline 474 31F
+dbline 475 321
+dbline 476 323
+dbline 477 326
+dbline 479 328
+dbline 47C 32B
+S USBFS_bGetEPAckState Def0312
+S $sb$USBFS_bRWUEnabled Def00A4
+S $se$USBFS_bRWUEnabled Def00B3
+S $sb$USBFS_Start Def0009
+S _USBFS_LoadInEP Def00CF
+S $se$USBFS_Start Def0059
+S $sb$USBFS_bGetEPState Def008F
+S USBFS_wGetEPCount Def00B3
+S $se$USBFS_bGetEPState Def00A4
+S _USBFS_bGetConfiguration Def0089
+S USBFS_EnableOutISOCEP Def01D6
+S $sb$USBFS_bGetEPAckState Def0312
+S $se$USBFS_bGetEPAckState Def031C
+S _USBFS_Force Def0233
+S $sb$USBFS_wGetEPCount Def00B3
+S $se$USBFS_wGetEPCount Def00CA
+S _USBFS_LoadInISOCEP Def00CA
+S $sb$USBFS_EnableOutISOCEP Def01D6
+S $se$USBFS_EnableOutISOCEP Def0220
+S _USBFS_bRWUEnabled Def00A4
+S _USBFS_Start Def0009
+S _USBFS_EnableOutEP Def01DB
+S _USBFS_bGetEPState Def008F
+S USBFS_DisableOutEP Def0220
+S USBFS_USB_EP0_BIT_LOOKUP Def0000
+S _USBFS_bGetEPAckState Def0312
+S USBFS_bCheckActivity Def0075
+S _USBFS_wGetEPCount Def00B3
+S $lb$USBFS_USB_EP0_BIT_LOOKUP Def0000
+S $sb$USBFS_DisableOutEP Def0220
+S $le$USBFS_USB_EP0_BIT_LOOKUP Def0001
+S $se$USBFS_DisableOutEP Def0233
+S _USBFS_EnableOutISOCEP Def01D6
+S USBFS_Stop Def0059
+S $sb$USBFS_bCheckActivity Def0075
+S USBFS_bReadOutEP Def0236
+S $se$USBFS_bCheckActivity Def0089
+S USBFS_USB_EPX_BIT_LOOKUP Def0001
+S USBFS_SetPowerStatus Def031C
+S $sb$USBFS_Stop Def0059
+S $lb$USBFS_USB_EPX_BIT_LOOKUP Def0001
+S $se$USBFS_Stop Def0075
+S $le$USBFS_USB_EPX_BIT_LOOKUP Def0009
+S $sb$USBFS_bReadOutEP Def0236
+S $se$USBFS_bReadOutEP Def0312
+S USBFS_LoadInEP Def00CF
+S $sb$USBFS_SetPowerStatus Def031C
+S USBFS_bGetConfiguration Def0089
+S $se$USBFS_SetPowerStatus Def032C
+S _USBFS_DisableOutEP Def0220
+S _USBFS_bCheckActivity Def0075
+S USBFS_Force Def0233
+S $sb$USBFS_bGetConfiguration Def0089
+S $se$USBFS_bGetConfiguration Def008F
+S USBFS_LoadInISOCEP Def00CA
+S _USBFS_Stop Def0059
+S _USBFS_bReadOutEP Def0236
+S USBFS_bRWUEnabled Def00A4
+S $sb$USBFS_Force Def0233
+S USBFS_Start Def0009
+S $se$USBFS_Force Def0236
+S USBFS_EnableOutEP Def01DB
+S $sb$USBFS_LoadInISOCEP Def00CA
+S USBFS_bGetEPState Def008F
+S $se$USBFS_LoadInISOCEP Def01D6
+S _USBFS_SetPowerStatus Def031C
+T 00 00 01 01 02 04 08 10 20 40 80 70 BF 62 D0
+R 00 00 00 02
+T 00 0D 00 00 62 D3 00 00 10 71 10 62 BD 07 43 E2
+R 00 00 00 02 43 02 00 01 43 06 00 01
+T 00 19 10 70 EF 41 FE F7 43 FE 10 53 00 00 55
+R 00 00 00 02 03 0C 00 01
+T 00 25 00 00 00 55 00 00 00 55 00 00 00 55
+R 00 00 00 02 03 02 00 04 03 06 00 00 03 0A 00 03
+T 00 2E 00 00 00 62 6C 00 62 6D 40 62 6E 80 62 6F
+R 00 00 00 02 01 02 00 01
+T 00 3B C0 62 33 80 62 34 00 18 29 02 71 10 60 30
+R 00 00 00 02
+T 00 49 70 EF 62 36 03 43 DF 14 62 35 04 70 3F 71
+R 00 00 00 02
+T 00 57 C0 7F 62 D0 00 00 55 00 00 00 55 00 00 00
+R 00 00 00 02 43 06 00 01 03 09 00 01 03 0D 00 04
+T 00 62 55 00 00 00 55 00 00 00 62 33 00 41 35 FB
+R 00 00 00 02 03 03 00 00 03 07 00 03
+T 00 6E 62 DF FC 62 DE 3F 7F 71 10 5D 30 21 04 A0
+R 00 00 00 02
+T 00 7C 05 50 01 80 03 50 00 41 30 FB 70 EF 7F 62
+R 00 00 00 02
+T 00 8A D0 00 00 51 00 00 7F 70 BF 62 D3 00 00 39
+R 00 00 00 02 43 03 00 00 03 06 00 00 43 0D 00 02
+T 00 95 09 D0 06 5C 52 00 00 80 03 50 00 70 3F 71
+R 00 00 00 02 03 07 00 02
+T 00 A2 C0 7F 62 D0 00 00 47 00 00 02 B0 05 50 00
+R 00 00 00 02 43 06 00 03 03 09 00 03
+T 00 AE 80 03 50 01 7F 39 09 D0 11 78 64 5C 5E 41
+R 00 00 00 02
+T 00 BC 11 02 08 5E 40 21 01 5C 18 80 03 50 00 7F
+R 00 00 00 02
+T 00 CA 50 07 08 80 04 50 0D 08 70 BF 62 D0 00 00
+R 00 00 00 02 43 0E 00 01
+T 00 D7 62 D3 07 4F 52 FC 39 09 D0 F0 52 F8 21 01
+R 00 00 00 02
+T 00 E5 53 00 02 52 F9 53 00 01 10 52 F7 B0 10 50
+R 00 00 00 02 01 03 00 01 01 08 00 01
+T 00 F1 00 01 03 FC 78 57 00 01 4B 09 00 28 20 10
+R 00 00 00 02 01 02 00 02 41 08 00 02
+T 00 FD 34 00 00 50 00 01 03 FC 78 57 00 01 4B 09
+R 00 00 00 02 01 03 00 01 01 06 00 02 41 0C 00 02
+T 01 08 00 28 20 22 00 00 A0 06 26 00 02 7F 80 04
+R 00 00 00 02 01 06 00 01 01 0B 00 01
+T 01 14 2E 00 02 80 4F 52 FC 78 64 5C 51 00 01 61
+R 00 00 00 02 01 03 00 01 01 0D 00 01
+T 01 20 41 51 00 02 61 40 4F 52 FC 5C 71 10 39 05
+R 00 00 00 02 01 04 00 01
+T 01 2D C0 14 5E 67 49 F7 01 A0 09 70 FE 60 44 71
+R 00 00 00 02
+T 01 3B 01 80 16 60 44 80 12 5E 6B 49 F7 01 A0 09
+R 00 00 00 02
+T 01 49 70 FE 60 34 71 01 80 03 60 34 70 EF 4F 27
+R 00 00 00 02
+T 01 57 F8 01 B0 05 52 F9 A0 2C 52 FB 08 4F 52 FB
+R 00 00 00 02
+T 01 65 39 05 C0 11 52 F9 60 D3 20 52 00 60 64 75
+R 00 00 00 02
+T 01 73 7A 00 01 BF F8 80 0F 52 F9 60 D3 20 52 00
+R 00 00 00 02 01 03 00 01
+T 01 80 60 58 75 7A 00 01 BF F8 62 D3 07 4F 52 FC
+R 00 00 00 02 01 06 00 01
+T 01 8D 5C 71 10 39 05 C0 14 5E 67 49 F7 01 A0 09
+R 00 00 00 02
+T 01 9B 70 FE 61 48 71 01 80 16 61 48 80 12 5E 6B
+R 00 00 00 02
+T 01 A9 49 F7 01 A0 09 70 FE 61 3C 71 01 80 03 61
+R 00 00 00 02
+T 01 B7 3C 70 EF 10 4F 52 FE 20 62 D3 00 00 3D
+R 00 00 00 02 43 0C 00 02
+T 01 C3 00 00 02 A0 08 56 00 00 00 71 10 61 53 70
+R 00 00 00 02 03 02 00 02 03 08 00 02
+T 01 CF EF 18 70 3F 71 C0 7F 57 05 10 80 04 57 09
+R 00 00 00 02
+T 01 DD 10 70 BF 62 D3 00 00 39 00 A0 34 39 09 D0
+R 00 00 00 02 43 07 00 02
+T 01 EA 30 5C 3D 00 00 02 A0 2A 10 56 00 00 00 5B
+R 00 00 00 02 03 05 00 02 03 0C 00 02
+T 01 F6 64 5C 63 3F 40 18 08 39 05 C0 0A 71 10 20
+R 00 00 00 02
+T 02 04 5E 67 61 40 80 08 71 10 20 5E 6B 61 34 5E
+R 00 00 00 02
+T 02 12 53 18 61 53 70 EF 80 02 18 70 3F 71 C0 7F
+R 00 00 00 02
+T 02 20 39 00 A0 0F 39 09 D0 0B 5C 71 10 5E 53 63
+R 00 00 00 02
+T 02 2E 53 08 70 EF 7F 60 34 7F 70 BF 62 D0 00 00
+R 00 00 00 02 43 0E 00 01
+T 02 3B 62 D3 07 4F 52 FD 39 09 D0 C9 52 F9 21 01
+R 00 00 00 02
+T 02 49 53 00 01 52 FA 53 00 02 52 FD 78 64 5C 5E
+R 00 00 00 02 01 03 00 01 01 08 00 01
+T 02 55 40 21 01 3A 00 01 A0 0B C0 1C 53 00 01 5E
+R 00 00 00 02 01 06 00 01 01 0D 00 01
+T 02 61 41 53 00 02 80 14 51 00 01 A0 06 55 00 02
+R 00 00 00 02 01 04 00 01 01 09 00 01 01 0E 00 01
+T 02 6C 00 80 0B 5E 41 3A 00 02 A0 05 D0 03 53
+R 00 00 00 02 01 08 00 01
+T 02 78 00 02 4F 52 FD 5C 71 10 39 05 C0 14 5E 67
+R 00 00 00 02 01 02 00 01
+T 02 85 49 F7 01 A0 09 70 FE 60 4C 71 01 80 16 60
+R 00 00 00 02
+T 02 93 4C 80 12 5E 6B 49 F7 01 A0 09 70 FE 60 3C
+R 00 00 00 02
+T 02 A1 71 01 80 03 60 3C 70 EF 26 00 01 01 B0 05
+R 00 00 00 02 01 0B 00 01
+T 02 AE 51 00 02 A0 5C 4F 52 FD 39 05 C0 22 4F 52
+R 00 00 00 02 01 03 00 01
+T 02 BB FC 08 52 FB 60 D3 20 71 10 5D E0 08 21 F8
+R 00 00 00 02
+T 02 C9 29 02 60 E0 70 EF 5D 64 54 00 75 7A 00 02
+R 00 00 00 02 01 0E 00 01
+T 02 D6 BF F8 80 20 4F 52 FC 08 52 FB 60 D3 20 71
+R 00 00 00 02
+T 02 E4 10 5D E0 08 21 F8 29 02 60 E0 70 EF 5D 58
+R 00 00 00 02
+T 02 F2 54 00 75 7A 00 02 BF F8 18 71 10 60 E0 70
+R 00 00 00 02 01 06 00 01
+T 02 FF EF 62 D3 07 4F 52 FD 78 64 5C 5E 41 11 02
+R 00 00 00 02
+T 03 0D 70 3F 71 C0 7F 5C 71 10 5E 53 70 EF 21 10
+R 00 00 00 02
+T 03 1B 7F 62 D0 00 00 39 00 A0 06 2E 00 00 01 80
+R 00 00 00 02 43 05 00 03 03 0C 00 03
+T 03 27 04 26 00 00 FE 7F
+R 00 00 00 02 03 04 00 03
+.end
+.start
+XH
+H 3 areas 1 global symbols
+M timer16int.asm
+A text size 0 flags 0
+dbfile lib/timer16int.asm
+dbfunc 0 ? 0 I
+dbfile Timer16.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/Timer16.inc
+dbfunc 0 ? 0 I
+dbfile lib/timer16int.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/timer16int.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/timer16int.asm
+dbfunc 0 ? 0 I
+dbline 4C 0
+S _Timer16_ISR Def0000
+T 00 00 7E
+R 00 00 00 02
+.end
+.start
+XH
+H 3 areas 18 global symbols
+M timer16.asm
+A text size 0 flags 0
+dbfile lib/timer16.asm
+dbfunc 0 ? 0 I
+dbfile Timer16.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/Timer16.inc
+dbfunc 0 ? 0 I
+dbfile lib/timer16.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/timer16.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A toastedlightuinousb4_RAM size 0 flags 20
+A UserModules size 23 flags 0
+dbfile lib/timer16.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 52 3
+dbline 2 4
+dbline 6E 7
+dbline 8D 8
+dbline 8F B
+dbline A9 C
+dbline AB F
+dbline C7 10
+dbline C8 12
+dbline C9 14
+dbline CA 17
+dbline CC 19
+dbline CF 1C
+dbline EB 1D
+dbline EC 1F
+dbline ED 20
+dbline EF 22
+S _Timer16_DisableInt Def0004
+S _Timer16_Start Def0008
+S Timer16_EnableInt Def0000
+S $sb$Timer16_EnableInt Def0000
+S Timer16_SetPeriod Def001D
+S $se$Timer16_EnableInt Def0004
+S Timer16_Stop Def000C
+S $sb$Timer16_SetPeriod Def001D
+S $se$Timer16_SetPeriod Def0023
+S Timer16_SetMode Def0010
+S $sb$Timer16_Stop Def000C
+S $se$Timer16_Stop Def0010
+S $sb$Timer16_SetMode Def0010
+S $se$Timer16_SetMode Def001D
+S _Timer16_EnableInt Def0000
+S Timer16_DisableInt Def0004
+S _Timer16_SetPeriod Def001D
+S $sb$Timer16_DisableInt Def0004
+S $se$Timer16_DisableInt Def0008
+S _Timer16_Stop Def000C
+S Timer16_Start Def0008
+S _Timer16_SetMode Def0010
+S $sb$Timer16_Start Def0008
+S $se$Timer16_Start Def000C
+T 00 00 43 E0 08 7F 41 E0 F7 7F 43 B0 01 7F 41 B0
+R 00 00 00 02
+T 00 0E FE 7F 39 00 A0 06 43 B0 02 80 04 41 B0 FD
+R 00 00 00 02
+T 00 1C 7F 60 B2 4B 60 B1 7F
+R 00 00 00 02
+.end
+.start
+XH
+H 3 areas 1 global symbols
+M spisint.asm
+A text size 0 flags 0
+dbfile lib/spisint.asm
+dbfunc 0 ? 0 I
+dbfile SPIS.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/SPIS.inc
+dbfunc 0 ? 0 I
+dbfile lib/spisint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/spisint.asm
+dbfunc 0 ? 0 I
+dbline 4C 0
+S _SPIS_ISR Def0000
+T 00 00 7E
+R 00 00 00 02
+.end
+.start
+XH
+H 2 areas 24 global symbols
+M spis.asm
+A text size 0 flags 0
+dbfile lib/spis.asm
+dbfunc 0 ? 0 I
+dbfile SPIS.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/SPIS.inc
+dbfunc 0 ? 0 I
+dbfile lib/spis.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/spis.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A UserModules size 2A flags 0
+dbfile lib/spis.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 58 3
+dbline 2 4
+dbline 76 7
+dbline 98 8
+dbline 99 A
+dbline 9B C
+dbline B7 D
+dbline B9 10
+dbline D6 11
+dbline D8 13
+dbline F5 14
+dbline F7 16
+dbline 114 17
+dbline 116 19
+dbline 2 1A
+dbline 138 1C
+dbline 2 1F
+dbline 13B 21
+dbline 2 22
+dbline 15B 24
+dbline 2 27
+dbline 15E 29
+S SPIS_bReadStatus Def0017
+S _SPIS_Start Def0008
+S SPIS_EnableInt Def0000
+S $sb$SPIS_SetupTxData Def0011
+S $sb$SPIS_DisableSS Def001A
+S $se$SPIS_SetupTxData Def0014
+S $se$SPIS_DisableSS Def0022
+S $sb$SPIS_bReadStatus Def0017
+S _SPIS_bReadRxData Def0014
+S $se$SPIS_bReadStatus Def001A
+S $sb$SPIS_EnableInt Def0000
+S $se$SPIS_EnableInt Def0004
+S SPIS_Stop Def000D
+S _SPIS_SetupTxData Def0011
+S _SPIS_DisableSS Def001A
+S _SPIS_bReadStatus Def0017
+S $sb$SPIS_Stop Def000D
+S $se$SPIS_Stop Def0011
+S _SPIS_EnableInt Def0000
+S SPIS_DisableInt Def0004
+S SPIS_EnableSS Def0022
+S $sb$SPIS_DisableInt Def0004
+S $se$SPIS_DisableInt Def0008
+S _SPIS_Stop Def000D
+S $sb$SPIS_EnableSS Def0022
+S $se$SPIS_EnableSS Def002A
+S SPIS_Start Def0008
+S SPIS_bReadRxData Def0014
+S $sb$SPIS_Start Def0008
+S $se$SPIS_Start Def000D
+S _SPIS_DisableInt Def0004
+S $sb$SPIS_bReadRxData Def0014
+S $se$SPIS_bReadRxData Def0017
+S _SPIS_EnableSS Def0022
+S SPIS_SetupTxData Def0011
+S SPIS_DisableSS Def001A
+T 00 00 43 E0 20 7F 41 E0 DF 7F 29 01 60 2B 7F 41
+R 00 00 00 01
+T 00 0E 2B FE 7F 60 29 7F 5D 2A 7F 5D 2B 7F 71 10
+R 00 00 00 01
+T 00 1C 43 29 08 70 EF 7F 71 10 41 29 F7 70 EF 7F
+R 00 00 00 01
+.end
+.start
+XH
+H 3 areas 1 global symbols
+M spimint.asm
+A text size 0 flags 0
+dbfile lib/spimint.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/SPIM.inc
+dbfunc 0 ? 0 I
+dbfile lib/spimint.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/spimint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/spimint.asm
+dbfunc 0 ? 0 I
+dbline 4D 0
+S _SPIM_ISR Def0000
+T 00 00 7E
+R 00 00 00 02
+.end
+.start
+XH
+H 2 areas 20 global symbols
+M spim.asm
+A text size 0 flags 0
+dbfile lib/spim.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/SPIM.inc
+dbfunc 0 ? 0 I
+dbfile lib/spim.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/spim.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A UserModules size 1A flags 0
+dbfile lib/spim.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 5B 3
+dbline 2 4
+dbline 7C 7
+dbline A3 8
+dbline A4 A
+dbline A6 C
+dbline C5 D
+dbline C7 10
+dbline E8 11
+dbline EA 13
+dbline 10B 14
+dbline 10D 16
+dbline 130 17
+dbline 132 19
+S _SPIM_Start Def0008
+S SPIM_EnableInt Def0000
+S $sb$SPIM_bReadStatus Def0017
+S _bSPIM_ReadRxData Def0014
+S _SPIM_bReadRxData Def0014
+S $se$SPIM_bReadStatus Def001A
+S $sb$SPIM_EnableInt Def0000
+S $se$SPIM_EnableInt Def0004
+S SPIM_Stop Def000D
+S _bSPIM_ReadStatus Def0017
+S _SPIM_bReadStatus Def0017
+S $sb$SPIM_Stop Def000D
+S $se$SPIM_Stop Def0011
+S SPIM_SendTxData Def0011
+S _SPIM_EnableInt Def0000
+S SPIM_DisableInt Def0004
+S $sb$SPIM_SendTxData Def0011
+S $se$SPIM_SendTxData Def0014
+S $sb$SPIM_DisableInt Def0004
+S $se$SPIM_DisableInt Def0008
+S _SPIM_Stop Def000D
+S SPIM_Start Def0008
+S bSPIM_ReadRxData Def0014
+S SPIM_bReadRxData Def0014
+S $sb$SPIM_Start Def0008
+S $se$SPIM_Start Def000D
+S _SPIM_SendTxData Def0011
+S _SPIM_DisableInt Def0004
+S $sb$SPIM_bReadRxData Def0014
+S $se$SPIM_bReadRxData Def0017
+S bSPIM_ReadStatus Def0017
+S SPIM_bReadStatus Def0017
+T 00 00 43 E0 20 7F 41 E0 DF 7F 29 01 60 2B 7F 41
+R 00 00 00 01
+T 00 0E 2B FE 7F 60 29 7F 5D 2A 7F 5D 2B 7F
+R 00 00 00 01
+.end
+.start
+XH
+H 1 areas 1 global symbols
+M psocgpioint.asm
+A text size 1 flags 0
+dbfile lib/psocgpioint.asm
+dbfunc 0 ? 0 I
+dbline 41 0
+dbfile ./lib/PSoCGPIOINT.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocgpioint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+S PSoC_GPIO_ISR Def0000
+T 00 00 7E
+R 00 00 00 00
+.end
+.start
+XH
+H 1 areas 4 global symbols
+M psocdynamicint.asm
+S ACTIVE_CONFIG_STATUS Ref0000
+S _SPIM_ISR Ref0000
+S _SPIS_ISR Ref0000
+A text size 1F flags 0
+dbfile lib/psocdynamicint.asm
+dbfunc 0 ? 0 I
+dbline 17 0
+dbline 18 1
+dbline 19 3
+dbline 1A 6
+dbline 1B 8
+dbline 1C A
+dbline 1D D
+dbline 1E F
+dbline 1F 10
+dbline 2 11
+dbline 24 13
+dbline 26 15
+dbline 27 16
+dbline 28 19
+dbline 29 1A
+dbline 2 1D
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocdynamicint.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/PSoCDynamic.inc
+dbfunc 0 ? 0 I
+S Dispatch_INTERRUPT_6 Def0000
+T 00 00 08 50 00 47 00 00 02 B0 0C 50 04 47 00 00
+R 00 00 00 00 03 06 00 00 03 0E 00 00
+T 00 0C 01 B0 05 18 7E 71 00 E0 01 18 7D 00 00 18
+R 00 00 00 00 02 0D 00 02
+T 00 1A 7D 00 00 38 00
+R 00 00 00 00 02 03 00 01
+.end
+.start
+XH
+H 1 areas 5 global symbols
+M psocdynamic.asm
+S ACTIVE_CONFIG_STATUS Ref0000
+A text size 1A flags 0
+dbfile lib/psocdynamic.asm
+dbfunc 0 ? 0 I
+dbline 3 0
+dbline 1A 3
+dbline 1B 5
+dbline 1C 8
+dbline 1D A
+dbline 1F C
+dbline 3 D
+dbline 24 10
+dbline 25 12
+dbline 26 15
+dbline 27 17
+dbline 29 19
+dbfile ./lib/PSoCDynamic.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocdynamic.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocdynamic.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+S _IsserialPassThruLoaded Def000D
+S Istoastedlightuinousb4Loaded Def0000
+S _Istoastedlightuinousb4Loaded Def0000
+S IsserialPassThruLoaded Def000D
+T 00 00 62 D0 00 00 50 00 47 00 00 01 A0 03 50 01
+R 00 00 00 00 43 04 00 00 03 09 00 00
+T 00 0C 7F 62 D0 00 00 50 00 47 00 00 02 A0 03 50
+R 00 00 00 00 43 05 00 00 03 0A 00 00
+T 00 18 01 7F
+R 00 00 00 00
+.end
+.start
+XH
+H 2 areas D global symbols
+M psocconfigtbl.asm
+A text size 0 flags 0
+dbfile lib/psocconfigtbl.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+A lit size F9 flags 0
+dbfile lib/psocconfigtbl.asm
+dbfunc 0 ? 9D I
+dbline 2 9D
+dbline 7C 9F
+dbline 2 A2
+dbline 7E A4
+dbline 7F A7
+dbline 2 AA
+dbline 81 AC
+dbline 82 AF
+dbline 2 B2
+dbline 84 B4
+dbline 85 B7
+dbline 2 BA
+dbline 87 BC
+dbline 88 BF
+dbline 2 C2
+dbline 8A C4
+dbline 8B C7
+dbline 2 CA
+dbline 8D CC
+dbline 8E CF
+dbline 2 D2
+dbline 90 D4
+dbline 91 D7
+dbline 2 DA
+dbline 93 DC
+dbline 94 DF
+dbline 2 E2
+dbline 96 E4
+dbline 97 E7
+dbline 2 EA
+dbline 99 EC
+dbline 2 EF
+dbline 9B F1
+S UnloadConfigTBL_Total_Bank0 Def00F7
+S UnloadConfigTBL_Total_Bank1 Def00F8
+S ReloadConfigTBL_toastedlightuinousb4_Bank0 Def00F2
+S ReloadConfigTBL_toastedlightuinousb4_Bank1 Def00F3
+S UnloadConfigTBL_toastedlightuinousb4_Bank0 Def00F4
+S UnloadConfigTBL_toastedlightuinousb4_Bank1 Def00F5
+S LoadConfigTBL_toastedlightuinousb4_Bank0 Def0005
+S LoadConfigTBL_toastedlightuinousb4_Bank1 Def0076
+S LoadConfigTBL_toastedlightuinousb4_Ordered Def009D
+S UnloadConfigTBL_serialPassThru_Bank0 Def0002
+S UnloadConfigTBL_serialPassThru_Bank1 Def0003
+S LoadConfigTBL_serialPassThru_Bank0 Def0000
+S LoadConfigTBL_serialPassThru_Bank1 Def0001
+T 00 00 FF FF FF FF FF 61 00 FD 00 A5 00 A4 00 A0
+R 00 00 00 01
+T 00 0E 00 A1 00 A2 00 A3 00 A8 00 A6 00 A7 00 7C
+R 00 00 00 01
+T 00 1C 33 7A 00 7B 04 79 00 36 00 37 00 38 00 39
+R 00 00 00 01
+T 00 2A 00 3A 00 3B 00 3C 00 3D 00 3E 00 3F 00 40
+R 00 00 00 01
+T 00 38 00 41 00 42 00 43 00 44 00 45 00 46 00 47
+R 00 00 00 01
+T 00 46 00 48 00 49 00 4A 00 4B 00 4C 00 4D 00 4E
+R 00 00 00 01
+T 00 54 00 4F 00 D6 00 D7 00 2B 80 B0 04 B3 00 B6
+R 00 00 00 01
+T 00 62 00 B2 01 B5 00 B8 00 B1 00 B4 00 B7 00 33
+R 00 00 00 01
+T 00 70 00 34 00 35 00 FF 54 00 55 00 56 00 57 00
+R 00 00 00 01
+T 00 7E 58 00 59 00 5A 00 5B 00 DC 01 E2 00 DD 00
+R 00 00 00 01
+T 00 8C D8 00 D9 00 DA 00 DB 00 DF 00 29 78 30 00
+R 00 00 00 01
+T 00 9A BD 00 FF 70 EF 62 00 00 71 10 62 00 00 62
+R 00 00 00 01
+T 00 A8 01 9A 70 EF 62 01 00 62 04 02 71 10 62 04
+R 00 00 00 01
+T 00 B6 33 62 05 B0 70 EF 62 05 00 62 08 00 71 10
+R 00 00 00 01
+T 00 C4 62 08 08 62 09 20 70 EF 62 09 00 62 0C 00
+R 00 00 00 01
+T 00 D2 71 10 62 0C 00 62 0D 00 70 EF 62 0D 00 62
+R 00 00 00 01
+T 00 E0 10 00 71 10 62 10 00 62 11 00 70 EF 62 11
+R 00 00 00 01
+T 00 EE 00 70 EF 7F FF FF FF FF FF FF FF
+R 00 00 00 01
+.end
+.start
+XH
+H 3 areas 20 global symbols
+M psocconfig.asm
+S UnloadConfigTBL_Total_Bank0 Ref0000
+S UnloadConfigTBL_Total_Bank1 Ref0000
+S ReloadConfigTBL_toastedlightuinousb4_Bank0 Ref0000
+S ReloadConfigTBL_toastedlightuinousb4_Bank1 Ref0000
+S UnloadConfigTBL_toastedlightuinousb4_Bank0 Ref0000
+S UnloadConfigTBL_toastedlightuinousb4_Bank1 Ref0000
+S LoadConfigTBL_toastedlightuinousb4_Bank0 Ref0000
+S LoadConfigTBL_toastedlightuinousb4_Bank1 Ref0000
+S LoadConfigTBL_toastedlightuinousb4_Ordered Ref0000
+S UnloadConfigTBL_serialPassThru_Bank0 Ref0000
+S UnloadConfigTBL_serialPassThru_Bank1 Ref0000
+S LoadConfigTBL_serialPassThru_Bank0 Ref0000
+S LoadConfigTBL_serialPassThru_Bank1 Ref0000
+A text size 0 flags 0
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/GlobalParams.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.1/Common/CY110F~1/tools/include/CY7C64~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/PSoCDynamic.inc
+dbfunc 0 ? 0 I
+A psoc_config size 173 flags 0
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbline 3 0
+dbline 49 3
+dbline 4B 6
+dbline 4D 9
+dbline 4E C
+dbline 52 F
+dbline 2 10
+dbline 6C 12
+dbline 2 13
+dbline 6E 15
+dbline 6F 17
+dbline 71 18
+dbline 72 1A
+dbline 73 1C
+dbline 75 1F
+dbline 76 21
+dbline 78 22
+dbline 79 24
+dbline 7A 26
+dbline 3 29
+dbline 7E 2C
+dbline 2 2F
+dbline 80 31
+dbline 83 32
+dbline 9C 33
+dbline 2 34
+dbline 9E 36
+dbline 9F 38
+dbline A1 39
+dbline A2 3B
+dbline A3 3D
+dbline A5 40
+dbline A6 42
+dbline A8 43
+dbline A9 45
+dbline AA 47
+dbline 3 4A
+dbline AE 4D
+dbline 2 50
+dbline B0 52
+dbline B3 53
+dbline CD 54
+dbline 2 55
+dbline CF 57
+dbline D0 59
+dbline D2 5A
+dbline D3 5C
+dbline D4 5E
+dbline D6 61
+dbline D7 63
+dbline D9 64
+dbline DA 66
+dbline DB 68
+dbline 2 6B
+dbline 2 6D
+dbline 3 6F
+dbline E1 72
+dbline 2 75
+dbline E3 77
+dbline E6 78
+dbline 2 79
+dbline 100 7B
+dbline 101 7E
+dbline 2 81
+dbline 104 83
+dbline 105 86
+dbline 107 89
+dbline 108 8C
+dbline 10A 8F
+dbline 10B 92
+dbline 2 95
+dbline 10E 97
+dbline 110 9A
+dbline 112 9D
+dbline 114 A0
+dbline 2 A1
+dbline 116 A3
+dbline 117 A5
+dbline 119 A6
+dbline 11A A8
+dbline 11B AA
+dbline 11D AD
+dbline 11E AF
+dbline 120 B0
+dbline 121 B2
+dbline 122 B4
+dbline 3 B7
+dbline 126 BA
+dbline 2 BD
+dbline 128 BF
+dbline 12B C0
+dbline 145 C1
+dbline 2 C2
+dbline 147 C4
+dbline 148 C6
+dbline 14A C7
+dbline 14B C9
+dbline 14C CB
+dbline 14E CE
+dbline 14F D0
+dbline 151 D1
+dbline 152 D3
+dbline 153 D5
+dbline 2 D8
+dbline 157 DA
+dbline 158 DD
+dbline 2 E0
+dbline 15B E2
+dbline 15C E5
+dbline 15E E8
+dbline 15F EB
+dbline 161 EE
+dbline 162 F1
+dbline 2 F4
+dbline 165 F6
+dbline 166 F9
+dbline 168 FC
+dbline 2 FF
+dbline 16B 101
+dbline 3 104
+dbline 16E 107
+dbline 2 10A
+dbline 170 10C
+dbline 173 10D
+dbline 18D 10E
+dbline 2 10F
+dbline 18F 111
+dbline 190 113
+dbline 192 114
+dbline 193 116
+dbline 194 118
+dbline 196 11B
+dbline 197 11D
+dbline 199 11E
+dbline 19A 120
+dbline 19B 122
+dbline 2 125
+dbline 2 127
+dbline 3 129
+dbline 1A1 12C
+dbline 2 12F
+dbline 1A3 131
+dbline 1A6 132
+dbline 1BC 133
+dbline 1BD 135
+dbline 1BE 136
+dbline 1BF 137
+dbline 1C0 138
+dbline 1C1 13B
+dbline 1C2 13D
+dbline 1C4 140
+dbline 1C5 141
+dbline 2 142
+dbline 2 144
+dbline 1CA 147
+dbline 1CB 148
+dbline 1CC 149
+dbline 1CD 14A
+dbline 1CE 14C
+dbline 1CF 14E
+dbline 1D0 14F
+dbline 1D1 152
+dbline 2 154
+dbline 1D4 156
+dbline 1D5 158
+dbline 1D6 159
+dbline 1D7 15A
+dbline 1D8 15B
+dbline 1D9 15D
+dbline 1DA 15E
+dbline 1DB 15F
+dbline 1DC 160
+dbline 1DD 161
+dbline 1DE 163
+dbline 1DF 165
+dbline 1E0 166
+dbline 1E1 167
+dbline 1E2 168
+dbline 1E3 16A
+dbline 1E5 16C
+dbline 3 16E
+dbline 4 170
+dbline 1E7 172
+S UnloadConfig_Total Def010E
+S _UnloadConfig_serialPassThru Def00C1
+S _LoadConfig_serialPassThru Def0079
+S ReloadConfig_toastedlightuinousb4 Def0033
+S UnloadConfig_toastedlightuinousb4 Def0054
+S LoadConfigInit Def0000
+S LoadConfig_toastedlightuinousb4 Def0010
+S _UnloadConfig_Total Def010E
+S _ReloadConfig_toastedlightuinousb4 Def0033
+S _UnloadConfig_toastedlightuinousb4 Def0054
+S _LoadConfigInit Def0000
+S UnloadConfig_serialPassThru Def00C1
+S _LoadConfig_toastedlightuinousb4 Def0010
+S LoadConfig_serialPassThru Def0079
+A InterruptRAM size 2 flags 20
+S ACTIVE_CONFIG_STATUS Def0000
+S _NO_SHADOW Def0000
+S _Port_1_Data_SHADE Def0001
+S NO_SHADOW Def0000
+S Port_1_Data_SHADE Def0001
+T 00 00 62 D0 00 00 55 00 00 00 55 00 01 02 7C
+R 00 00 00 01 41 04 00 02 01 07 00 02 01 0B 00 02
+T 00 0A 00 10 7C 00 00 7F 70 EF 10 70 EF 50 00 67
+R 00 00 00 01 00 02 00 01 02 05 00 08
+T 00 18 50 00 00 57 00 00 7C 01 33 50 01 67 50
+R 00 00 00 01 43 03 00 06 03 06 00 06 00 09 00 01
+T 00 23 00 00 57 00 00 7C 01 33 62 D0
+R 00 00 00 01 43 02 00 07 03 05 00 07 00 08 00 01
+T 00 2B 00 00 2E 00 00 01 70 EF 20 7F 10 70 EF 50
+R 00 00 00 01 41 02 00 02 01 05 00 02
+T 00 37 00 67 50 00 00 57 00 00 7C 01 33 50 01 67
+R 00 00 00 01 43 05 00 02 03 08 00 02 00 0B 00 01
+T 00 43 50 00 00 57 00 00 7C 01 33 62 D0
+R 00 00 00 01 43 03 00 03 03 06 00 03 00 09 00 01
+T 00 4C 00 00 2E 00 00 01 70 EF 20 7F 10 70 EF 50
+R 00 00 00 01 41 02 00 02 01 05 00 02
+T 00 58 00 67 50 00 00 57 00 00 7C 01 33 50 01 67
+R 00 00 00 01 43 05 00 04 03 08 00 04 00 0B 00 01
+T 00 64 50 00 00 57 00 00 7C 01 33 71 10 70 EF 62
+R 00 00 00 01 43 03 00 05 03 06 00 05 00 09 00 01
+T 00 70 D0 00 00 26 00 00 FE 70 EF 20 7F 70 EF 41
+R 00 00 00 01 41 03 00 02 01 06 00 02
+T 00 7C 04 7E 43 04 81 71 10 41 04 7F 43 04 80 41
+R 00 00 00 01
+T 00 8A 05 DC 43 05 03 41 29 1A 43 29 05 70 EF 41
+R 00 00 00 01
+T 00 98 2B 7F 41 B0 FB 41 B2 00 10 70 EF 50 00 67
+R 00 00 00 01
+T 00 A6 50 00 00 57 00 00 7C 01 33 50 01 67 50
+R 00 00 00 01 43 03 00 0B 03 06 00 0B 00 09 00 01
+T 00 B1 00 00 57 00 00 7C 01 33 62 D0
+R 00 00 00 01 43 02 00 0C 03 05 00 0C 00 08 00 01
+T 00 B9 00 00 2E 00 00 02 70 EF 20 7F 10 70 EF 50
+R 00 00 00 01 41 02 00 02 01 05 00 02
+T 00 C5 00 67 50 00 00 57 00 00 7C 01 33 50 01 67
+R 00 00 00 01 43 05 00 09 03 08 00 09 00 0B 00 01
+T 00 D1 50 00 00 57 00 00 7C 01 33 71 10 41 29 1A
+R 00 00 00 01 43 03 00 0A 03 06 00 0A 00 09 00 01
+T 00 DD 43 29 60 70 EF 41 2B 7F 43 2B 80 41 B0 FB
+R 00 00 00 01
+T 00 EB 43 B0 04 41 B2 00 43 B2 01 71 10 41 05 DC
+R 00 00 00 01
+T 00 F9 43 05 20 41 04 7F 70 EF 41 04 7E 62 D0
+R 00 00 00 01
+T 01 06 00 00 26 00 00 FD 70 EF 20 7F 10 70 EF 50
+R 00 00 00 01 41 02 00 02 01 05 00 02
+T 01 12 00 67 50 00 00 57 00 00 7C 01 33 50 01 67
+R 00 00 00 01 43 05 00 00 03 08 00 00 00 0B 00 01
+T 01 1E 50 00 00 57 00 00 7C 01 33 71 10 70 EF 62
+R 00 00 00 01 43 03 00 01 03 06 00 01 00 09 00 01
+T 01 2A D0 00 00 55 00 00 00 70 EF 20 7F 38 02 10
+R 00 00 00 01 41 03 00 02 01 06 00 02
+T 01 36 08 4F 56 FC 00 D0 04 56 FC 01 18 20 70 EF
+R 00 00 00 01
+T 01 44 62 E3 00 10 08 28 39 FF A0 1F 4F 48 FC 01
+R 00 00 00 01
+T 01 52 A0 03 71 10 54 FD 18 20 75 09 00 10 08 28
+R 00 00 00 01
+T 01 60 4F 59 FD 61 00 18 20 75 09 00 8F D7 38 FC
+R 00 00 00 01
+T 01 6E 70 3F 71 C0 7F
+R 00 00 00 01
+.end
